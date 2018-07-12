@@ -38,3 +38,14 @@ $('.show-modal-cheat').click(function() {
 $('.close-modal-cheat').click(function() {
     modalcheat.fadeOut();
 });
+
+// MODALE AMPOULE
+var d = $('#somedialog');
+$('.open').click(function(e){
+    d.removeClass('dialog-close');
+    d.addClass('dialog-open');
+});
+$('.close_info_bulles, .dialog-overlay').click(function(e){
+    d.removeClass('dialog-open');
+    d.addClass('dialog-close');
+});

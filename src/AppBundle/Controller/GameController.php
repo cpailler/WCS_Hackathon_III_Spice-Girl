@@ -2,6 +2,7 @@
 
 namespace AppBundle\Controller;
 
+use AppBundle\Entity\Infobulle;
 use AppBundle\Entity\Atout;
 use AppBundle\Entity\Banque;
 use AppBundle\Entity\Departement;
@@ -34,6 +35,7 @@ class GameController extends Controller
         $eventAleatoire = $em->getRepository(EventAleatoire::class)->findAll();
         $niveauPollution = $em->getRepository(NiveauPollutionGlobal::class)->findAll()[0];
         $typeDeveloppement = $em->getRepository(TypeDeveloppement::class)->findAll();
+        $infobulles = $em->getRepository(Infobulle::class)->FindAll();
 
         foreach ($departements as $departement){
             switch ($departement->getNiveauPollution()){
@@ -82,6 +84,8 @@ class GameController extends Controller
             'developpements' => $developpements,
             'eventAleatoire' => $eventAleatoire,
             'niveauPollution' => $niveauPollution,
+            'typeDeveloppements' => $typeDeveloppement,
+            'infobulle' => $infobulles[array_rand($infobulles)],
             'typeDeveloppements' => $typeDeveloppement,
             'couleur' => $couleur
         ));
