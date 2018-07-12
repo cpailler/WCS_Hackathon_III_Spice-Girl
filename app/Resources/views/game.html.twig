@@ -162,19 +162,19 @@
                         <h1>Magouilles</h1>
                         <div class="row">
 
-                            {% for atouts in atout %}
-                                <div class="col-4">
-                                    <a href="{{ path('achat_atout', {'id':atouts.id}) }}">
-                                        <button class="show-modal-dev open-modal ">{{ atouts.nom }}</button>
-                                    </a>
-                                    <p class="description">{{ atouts.description }}</p>
-                                </div>
-                            {% endfor %}
+                                {% for atouts in atout %}
+                                    <div class="col-6">
+                                        <a href="{{ path('achat_atout', {'id':atouts.id}) }}">
+                                            <button class="show-modal-dev open-modal ">{{ atouts.nom }}</button>
+                                        </a>
+                                        <p class="description">{{ atouts.description }}</p>
+                                    </div>
+                                {% endfor %}
+                            </div>
                         </div>
-                    </div>
-                    <a href="{{ path('end_of_turn') }}">
-                        <button class="show-modal-dev open-modal ">Fin de tour</button>
-                    </a>
+                        <a href="{{ path('end_of_turn') }}">
+                            <button class="finTour">Fin de tour</button>
+                        </a>
 
 
                     <div class="info_bulles">
@@ -185,9 +185,11 @@
                         <div class="dialog-overlay"></div>
                         <div class="dialog-content">
 
-                            <h2>{{ infobulle.titre }}</h2>
-                            <p>{{ infobulle.description }}</p>
-                            <p class="text-secondary" style="font-size: 0.9vw;">{{ infobulle.lien }}</p>
+                                <h2>{{ infobulle.titre }}</h2>
+                                <p>{{ infobulle.description }}</p>
+                                <a href="{{ infobulle.lien }}" target="_blank">
+                                    <p class="text-secondary" style="font-size: 0.9vw;">source : {{ infobulle.source }}</p>
+                                </a>
 
                             <div>
                                 <button class="close_info_bulles">J'ai compris !</button>

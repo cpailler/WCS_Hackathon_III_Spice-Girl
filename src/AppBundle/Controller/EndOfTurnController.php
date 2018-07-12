@@ -47,8 +47,6 @@ class EndOfTurnController extends Controller
             $pollutionTotale += $departement->getNiveauPollution();
             $em->persist($departement);
         }
-
-        dump($gainDuTour);
         if ($rapportTruque->getQuantite() != 1){
             $gainDuTour = floor($gainDuTour*(1-(0.1+0.3*($niveauPollutionGlobal->getNiveauGlobal()/100))));
         }else{
@@ -56,7 +54,6 @@ class EndOfTurnController extends Controller
             $em->persist($rapportTruque);
         }
 
-        dump($gainDuTour);
         $banque->setMoney($banque->getMoney()+$gainDuTour);
 
         $niveauPollutionGlobal->setNiveauGlobal(round($pollutionTotale/10, 2));
