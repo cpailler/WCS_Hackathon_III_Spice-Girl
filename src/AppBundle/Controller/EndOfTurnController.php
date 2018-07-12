@@ -30,7 +30,7 @@ class EndOfTurnController extends Controller
                 $departement->setNiveauPollution(min(100, $departement->getNiveauPollution()
                     +$facteurPollutionGlobal->getFacteur()));
                 if ($departement->getNiveauPollution()>=50){
-                    $impactProduction = 1-max(0,0.25*(($departement->getNiveauPollution()-50)*2/100)-$nbBarAOxygene*0.01);
+                    $impactProduction = 1-max(0,.25*(($departement->getNiveauPollution()-50)*2/100)-$nbBarAOxygene);
                 }
                 else{
                     $impactProduction = 1;
