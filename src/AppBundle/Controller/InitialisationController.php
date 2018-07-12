@@ -9,8 +9,10 @@ use AppBundle\Entity\Developpement;
 use AppBundle\Entity\FacteurInflationGlobal;
 use AppBundle\Entity\FacteurPollutionGlobal;
 use AppBundle\Entity\NiveauPollutionGlobal;
+use AppBundle\Entity\Personnage;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use Symfony\Component\HttpFoundation\Request;
 
 
 /*
@@ -21,9 +23,9 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 class InitialisationController extends Controller
 {
     /**
-     * @Route("/", name="initial")
+     * @Route("/{id}", name="initial")
      */
-    public function initialisationAction()
+    public function initialisationAction(Request $request, Personnage $personnage)
     {
         $em = $this->getDoctrine()->getManager();
         $departements = $em->getRepository(Departement::class)->findAll();
@@ -33,6 +35,14 @@ class InitialisationController extends Controller
         $niveauPollutionGlobals = $em->getRepository(NiveauPollutionGlobal::class)->findAll();
         $atouts = $em->getRepository(Atout::class)->findAll();
         $banques = $em->getRepository(Banque::class)->findAll();
+        $personnages = $em->getRepository(Personnage::class)->findBy(array('actif'=>1));
+
+        foreach ($personnages as $perso){
+            $perso->setActif(0);
+            $em->persist($perso);
+        }
+        $personnage->setActif(1);
+        $em->persist($personnage);
 
         foreach ($departements as $departement) {
             $departement->setUsine(0);
