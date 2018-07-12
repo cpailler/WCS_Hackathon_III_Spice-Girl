@@ -74,7 +74,8 @@
                                         <a href="{{ path('achat_developpement', {'id':developpement.id}) }}">
                                             <button class="show-modal-dev open-modal">{{ developpement.nom }}</button>
                                         </a>
-                                        <p class="description">{{ developpement.description }}</p>
+                                        <p class="description">{{ developpement.description }}<strong id="prix"> {{ developpement.prix * facteurInflation.facteur |round}}K€</strong></p>
+
                                     {% endfor %}
                                 </div>
                                 {% endfor %}
