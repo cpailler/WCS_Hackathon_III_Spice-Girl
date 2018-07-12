@@ -57,7 +57,10 @@
                                  src="http://res.cloudinary.com/tiffanym/image/upload/q_100/v1531386850/femme_ga_gajqip.png"
                                  alt="user" class="rounded-circle"/>
                             <h5 class="text-light user-name">Personnage</h5>
-                            <p class="text-secondary user-area">{{ banque.money }} K€</p>
+                            <p class="text-secondary user-area">{{ banque.money }} K€</p><br/>
+                            <p class="text-secondary user-area">Niveau de Pollution global : {{ niveauPollution.niveauGlobal }}</p>
+                            <p class="text-secondary user-area">Niveau d'inflation : {{ facteurInflation.facteur }}</p>
+                            <p class="text-secondary user-area">Revenus par tour : {{ facteurGain.facteur }} K€</p>
                         </div>
                     </div>
 
