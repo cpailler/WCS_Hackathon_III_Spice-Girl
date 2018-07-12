@@ -223,4 +223,28 @@ class Developpement
     {
         return $this->facteurGain;
     }
+
+    /**
+     * Set type
+     *
+     * @param \AppBundle\Entity\TypeDeveloppement $type
+     *
+     * @return Developpement
+     */
+    public function setType(\AppBundle\Entity\TypeDeveloppement $type)
+    {
+        $this->type = $type;
+
+        return $this;
+    }
+
+    /**
+     * Get type
+     *
+     * @return \AppBundle\Entity\TypeDeveloppement
+     */
+    public function getType()
+    {
+        return $this->type;
+    }
 }

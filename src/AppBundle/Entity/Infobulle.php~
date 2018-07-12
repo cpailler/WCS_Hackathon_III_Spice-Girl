@@ -125,3 +125,4 @@ class Infobulle
         return $this->lien;
     }
 }
+

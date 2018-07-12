@@ -3,9 +3,13 @@
 namespace AppBundle\Controller;
 
 use AppBundle\Entity\Atout;
+use AppBundle\Entity\Banque;
 use AppBundle\Entity\Departement;
 use AppBundle\Entity\Developpement;
 use AppBundle\Entity\EventAleatoire;
+use AppBundle\Entity\FacteurGainTotal;
+use AppBundle\Entity\FacteurInflationGlobal;
+use AppBundle\Entity\FacteurPollutionGlobal;
 use AppBundle\Entity\NiveauPollutionGlobal;
 use AppBundle\Entity\TypeDeveloppement;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
