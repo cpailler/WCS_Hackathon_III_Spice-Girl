@@ -9,6 +9,8 @@
     </head>
     <body>
         {% block body %}{% endblock %}
+        <script src="{{ asset('build/manifest.js') }}"></script>
+        <script src="{{ asset('build/jquery_jqueryUi.js') }}"></script>
         <script src="{{ asset('build/app.js') }}"></script>
         {% block javascripts %}{% endblock %}
     </body>
