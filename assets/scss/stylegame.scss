@@ -720,6 +720,7 @@ nav.side-open.open span, h5, h5 + p {
 .description{
   font-size: 0.75em;
   text-align: justify;
+  padding: 10px 10px;
 }
 
 .dvpt{
@@ -730,5 +731,13 @@ nav.side-open.open span, h5, h5 + p {
   color: #3db48e;
 }
 
+.sousType {
+  padding: 10px  0;
 
+}
+
+/*Expansion*/
+#dptNom{
+  text-align: center;
+}
 
