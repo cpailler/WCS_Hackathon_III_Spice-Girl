@@ -47,7 +47,7 @@ class GameController extends Controller
             'developpements' => $developpements,
             'eventAleatoire' => $eventAleatoire,
             'niveauPollution' => $niveauPollution,
-            'typeDeveloppement' => $typeDeveloppement
+            'typeDeveloppements' => $typeDeveloppement
         ));
     }
 }
