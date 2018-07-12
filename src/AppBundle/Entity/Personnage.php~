@@ -5,12 +5,12 @@ namespace AppBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * EventAleatoire
+ * Personnage
  *
- * @ORM\Table(name="event_aleatoire")
- * @ORM\Entity(repositoryClass="AppBundle\Repository\EventAleatoireRepository")
+ * @ORM\Table(name="personnage")
+ * @ORM\Entity(repositoryClass="AppBundle\Repository\personnageRepository")
  */
-class EventAleatoire
+class Personnage
 {
     /**
      * @var int
@@ -31,23 +31,17 @@ class EventAleatoire
     /**
      * @var string
      *
-     * @ORM\Column(name="description", type="string", length=255)
+     * @ORM\Column(name="image", type="string", length=255)
      */
-    private $description;
-
-    /**
-     * @var float
-     *
-     * @ORM\Column(name="pollution_apparition", type="float")
-     */
-    private $pollutionApparition;
+    private $image;
 
     /**
      * @var bool
      *
-     * @ORM\Column(name="actif", type="boolean")
+     * @ORM\Column(name="actif", type="boolean", length=255)
      */
     private $actif = 0;
+
 
     /**
      * Get id
@@ -64,7 +58,7 @@ class EventAleatoire
      *
      * @param string $nom
      *
-     * @return EventAleatoire
+     * @return personnage
      */
     public function setNom($nom)
     {
@@ -84,51 +78,27 @@ class EventAleatoire
     }
 
     /**
-     * Set description
+     * Set image
      *
-     * @param string $description
+     * @param string $image
      *
-     * @return EventAleatoire
+     * @return personnage
      */
-    public function setDescription($description)
+    public function setImage($image)
     {
-        $this->description = $description;
+        $this->image = $image;
 
         return $this;
     }
 
     /**
-     * Get description
+     * Get image
      *
      * @return string
      */
-    public function getDescription()
+    public function getImage()
     {
-        return $this->description;
-    }
-
-    /**
-     * Set pollutionApparition
-     *
-     * @param float $pollutionApparition
-     *
-     * @return EventAleatoire
-     */
-    public function setPollutionApparition($pollutionApparition)
-    {
-        $this->pollutionApparition = $pollutionApparition;
-
-        return $this;
-    }
-
-    /**
-     * Get pollutionApparition
-     *
-     * @return float
-     */
-    public function getPollutionApparition()
-    {
-        return $this->pollutionApparition;
+        return $this->image;
     }
 
     /**
@@ -136,7 +106,7 @@ class EventAleatoire
      *
      * @param boolean $actif
      *
-     * @return EventAleatoire
+     * @return Personnage
      */
     public function setActif($actif)
     {
