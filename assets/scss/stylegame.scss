@@ -1,0 +1,200 @@
+* {
+  box-sizing:border-box;
+}
+
+html,body {
+  min-height:100%;
+  height:100%;
+  background-color: #4e555b !important; //à changer
+  background-size:cover;
+  background-position:top center;
+  font-weight:200;
+}
+
+// COULEUR NIVEAU DE GALERE
+
+$niv1:#3db48e;
+$niv2:#5dca5f;
+$niv3:#99e600;
+$niv4:c3f001;
+$niv5:#ff0;
+$niv6:#fed201;
+$niv7:#ffaa01;
+$niv8:#fe5e00;
+$niv9:#fe0000;
+$niv10:maroon;
+
+// BAR DE PROGRESSION DE LA GALERE
+
+.progress {
+  height: 20px;
+  box-shadow:none;
+  -webkit-box-shadow:none;
+  background-image: -webkit-gradient(linear, left top, right top, from(rgba(230,230,230,0.3)),to(rgba(230,230,230,0.8)), color-stop(.2,#fff) );
+  background-color: #120e0e !important;
+}
+
+.progress-bar {
+  box-shadow:none;
+  -webkit-box-shadow:none;
+  background: linear-gradient(135deg, #3db48e 0%, #5dca5f 10%, #99e600 20%, #c3f001 30%, #ff0 40%, #fed201 50%, #ffaa01 60%, #fe5e00 70%, #fe0000 80%, maroon 100%);
+}
+
+// CARTOUNETTE
+
+.region {
+  stroke: #120e0e;
+  stroke-width: 0.4;
+  stroke-opacity: 0.6;
+}
+
+#hauteMarne {
+  fill: $niv1;
+  border: white;
+}
+
+#basRhin {
+  fill: $niv1;
+}
+
+#hautRhin {
+  fill: $niv1;
+}
+
+#moselle {
+  fill: $niv1;
+}
+
+#ardennes {
+  fill: $niv1;
+}
+
+#meurtheEtMoselle {
+  fill: $niv1;
+}
+
+#meuse {
+  fill: $niv1;
+}
+
+#vosges {
+  fill: $niv1;
+}
+
+#marne {
+  fill: $niv1;
+}
+
+#aube {
+  fill: $niv1;
+}
+
+.region:hover{
+  opacity: 0.5;
+}
+
+// NAVBAR
+
+.avatar {
+  width: 150px;
+}
+
+.side-navbar{
+  right: 0;
+  top:0;
+  bottom: 0;
+  width: 25vw;
+  height: 100%;
+  background: #120e0e;
+}
+
+nav.side-open.open.side-navbar{
+  right: 0;
+  top:0;
+  bottom: 0;
+  width: 25vw;
+  height: 100%;
+}
+
+nav.side-open.open span, h5, h5 + p{
+  display: block;
+
+}
+
+@media screen  and (max-width: 792px){
+  .user-op, .user-area, .user-name{
+    display: none;
+  }
+  .open .user-area, .open .user-name{
+    font-size: 15px;
+    display: block;
+  }
+  nav.side-open img{
+    width: 60px;
+  }
+  nav.side-open.side-navbar{
+    width: 70px;
+  }
+  nav.side-open.justify-content-between  {
+    justify-content: center!important;
+  }
+  nav.side-open, span, h5, h5 + p{
+    transition: all .1s linear;
+  }
+  .content-dev, .content-cheat, .content-exp {
+    display:none;
+  }
+}
+
+// POPUP1
+
+
+
+.open-modal {
+  background-color: #721413;
+  border: none;
+  color: #fff;
+  outline: none;
+  padding: 20px 40px;
+  width: 24vw;
+}
+
+.open-modal:hover {background-color: #8f1918
+}
+
+.modal-cheat, .modal-dev, .modal-exp {
+  top: 10%;
+  left: 10%;
+  background-color: #120e0e;
+  color: white;
+  display: none;
+  position: fixed;
+  width: 80%;
+  height: 80%;
+  padding: 50px;
+  z-index: 10;
+  box-shadow: 0 0 0 99999px rgba(0, 0, 0, 0.7);
+}
+
+.close-modal-cheat, .close-modal-dev, .close-modal-exp {
+  color:  white;
+  text-decoration: none;
+  float: right;
+  position: absolute;
+  top: 10px;
+  right: 20px
+}
+
+/* Developpement */
+
+.description{
+  font-size: 0.75em;
+  text-align: justify;
+}
+
+.dvpt{
+  margin-top: -2vw;
+}
+
+
+
