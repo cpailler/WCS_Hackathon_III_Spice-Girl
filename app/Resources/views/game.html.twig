@@ -59,8 +59,8 @@
                             <h5 class="text-light user-name">Personnage</h5>
                             <p class="text-secondary user-area">{{ banque.money }} K€</p><br/>
                             <p class="text-secondary user-area">Niveau de Pollution global : {{ niveauPollution.niveauGlobal }}</p>
-                            <p class="text-secondary user-area">Niveau d'inflation : {{ facteurInflation.facteur }}</p>
-                            <p class="text-secondary user-area">Revenus par tour : {{ facteurGain.facteur }} K€</p>
+                            <p class="text-secondary user-area">Niveau d'inflation : {{ facteurInflation.facteur |round}}</p>
+                            <p class="text-secondary user-area">Revenus par tour : {{ facteurGain.facteur |round }} K€</p>
                         </div>
                     </div>
 
