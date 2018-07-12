@@ -31,24 +31,24 @@ jQuery(document).ready(function($) {
 
         var animation = function() {
             setTimeout(function() {
-                one.style.top = '50%';
+                one.style.top = '10%';
             }, delay);
             setTimeout(function() {
-                one.style.top = '100%';
+                one.style.top = '-50%';
             }, delay * 5);
 
             setTimeout(function() {
-                two.style.top = '50%';
+                two.style.top = '10%';
             }, delay * 6);
             setTimeout(function() {
-                two.style.top = '100%';
+                two.style.top = '-50%';
             }, delay * 11);
 
             setTimeout(function() {
-                three.style.top = '50%';
+                three.style.top = '10%';
             }, delay * 12);
             setTimeout(function() {
-                three.style.top = '100%';
+                three.style.top = '-50%';
             }, delay * 17);
         };
         animation();
