@@ -10,7 +10,7 @@
     <div class="container-fluid">
         <div class="row no-padding">
         <div class="row">
-            
+
             {% for label, messages in app.flashes %}
                 {% for message in messages %}
                     <div class="alert alert-{{ label }}">
@@ -87,7 +87,7 @@
                                  src="http://res.cloudinary.com/tiffanym/image/upload/q_100/v1531386850/femme_ga_gajqip.png"
                                  alt="user" class="rounded-circle"/>
                             <h5 class="text-light user-name">Personnage</h5>
-                            <p class="text-secondary user-area">{{ banque.money }} K€</p><br/>
+                            <p class="text-secondary user-area">{{ banque.money |number_format(0, ' ', ',')}} K€</p><br/>
                         </div>
                     </div>
 
