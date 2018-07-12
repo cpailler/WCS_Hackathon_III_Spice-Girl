@@ -26,10 +26,11 @@ class AchatController extends Controller
         $facteurInflation = $em->getRepository(FacteurInflationGlobal::class)->findAll()[0];
         $facteurGain = $em->getRepository(FacteurGainTotal::class)->findAll()[0];
 
-        if($banque->getMoney()<($developpement->getPrix() * $facteurInflation->getFacteur())){
+        if($banque->getMoney()<ceil($developpement->getPrix() * $facteurInflation->getFacteur())){
             return $this->addFlash(error, "Vous n'avez pas assez d'argent pour investir dans cette amélioration.");
         }else{
-            $banque->setMoney(($banque->getMoney() - ($developpement->getPrix() * $facteurInflation->getFacteur())));
+            $banque->setMoney(($banque->getMoney() - ceil($developpement->getPrix() * $facteurInflation->getFacteur()
+                )));
             $facteurPollutionGlobale->setFacteur($facteurPollutionGlobale->getFacteur() + $developpement->getFacteurPollution());
             $facteurGain->setFacteur($facteurGain->getFacteur() *  $developpement->getFacteurGain());
             $facteurInflation->setFacteur($facteurInflation->getFacteur() * $developpement->getFacteurInflation());
