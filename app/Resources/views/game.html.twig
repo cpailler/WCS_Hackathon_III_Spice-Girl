@@ -70,9 +70,9 @@
                             <p class="text-secondary user-area">Niveau de Pollution global
                                 : {{ niveauPollution.niveauGlobal }}</p>
                             <img class="mini_icon" src="{{ asset('build/images/dollar.276bfed5.png') }}">
-                            <p class="text-secondary user-area">Niveau d'inflation : {{ facteurInflation.facteur }}</p>
+                            <p class="text-secondary user-area">Niveau d'inflation : {{ facteurInflation.facteur |round }}</p>
                             <img class="mini_icon" src="{{ asset('build/images/dollar.276bfed5.png') }}">
-                            <p class="text-secondary user-area">Revenus par tour : {{ facteurGain.facteur }} K€</p>
+                            <p class="text-secondary user-area">Revenus par tour : {{ facteurGain.facteur |round}} K€</p>
                         </div>
                     </div>
 
@@ -110,7 +110,7 @@
                                     {% for departement in departements %}
                                     {% if departement.usine == 1 %}
                                     <ul style="list-style-type: none">
-                                        <li>{{ departement.nom }}</li>
+                                        <li id="dptNom">{{ departement.nom }}</li>
                                     </ul>
                                     {% endif %}
                                 {% endfor %}
