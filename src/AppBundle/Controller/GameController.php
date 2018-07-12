@@ -8,6 +8,7 @@ use AppBundle\Entity\Departement;
 use AppBundle\Entity\Developpement;
 use AppBundle\Entity\EventAleatoire;
 use AppBundle\Entity\FacteurGainTotal;
+use AppBundle\Entity\FacteurInflationGlobal;
 use AppBundle\Entity\FacteurPollutionGlobal;
 use AppBundle\Entity\NiveauPollutionGlobal;
 use AppBundle\Entity\TypeDeveloppement;

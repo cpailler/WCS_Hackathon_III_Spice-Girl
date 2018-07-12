@@ -9,39 +9,32 @@ $('nav.side-open').click(function(){
     $('nav.side-open').toggleClass('open');
 });
 
-
-// MODAAAAAAAAAAAAAAAAAAAAAAAAAAALE 1 WOOOOP WOOOOP ELLE FONCTIOOOOONNNEEEEEEEE
-$('.button-dev').click(function(){
-    var buttonId = $(this).attr('id');
-    $('#modal-container-dev').removeAttr('class').addClass(buttonId);
-    $('body').addClass('modal-active');
-})
-
-$('#modal-container-dev').click(function(){
-    $(this).addClass('out');
-    $('body').removeClass('modal-active');
+// MODALE DEVELOPPEMENT
+var modaldev = $('.modal-dev');
+$('.show-modal-dev').click(function() {
+    modaldev.fadeIn();
 });
 
-// MODALE 2
-$('.button-exp').click(function(){
-    var buttonId = $(this).attr('id');
-    $('#modal-container-exp').removeAttr('class').addClass(buttonId);
-    $('body').addClass('modal-active');
-})
-
-$('#modal-container-exp').click(function(){
-    $(this).addClass('out');
-    $('body').removeClass('modal-active');
+$('.close-modal-dev').click(function() {
+    modaldev.fadeOut();
 });
 
-// MODALE 3
-$('.button-cheat').click(function(){
-    var buttonId = $(this).attr('id');
-    $('#modal-container-cheat').removeAttr('class').addClass(buttonId);
-    $('body').addClass('modal-active');
-})
+// MODALE EXPANSION
+var modalexp = $('.modal-exp');
+$('.show-modal-exp').click(function() {
+    modalexp.fadeIn();
+});
 
-$('#modal-container-cheat').click(function(){
-    $(this).addClass('out');
-    $('body').removeClass('modal-active');
+$('.close-modal-exp').click(function() {
+    modalexp.fadeOut();
+});
+
+// MODALE MAGOUILLE
+var modalcheat = $('.modal-cheat');
+$('.show-modal-cheat').click(function() {
+    modalcheat.fadeIn();
+});
+
+$('.close-modal-cheat').click(function() {
+    modalcheat.fadeOut();
 });

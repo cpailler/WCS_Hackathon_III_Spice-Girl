@@ -66,4 +66,45 @@ class TypeDeveloppement
     {
         return $this->type;
     }
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->developpements = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    /**
+     * Add developpement
+     *
+     * @param \AppBundle\Entity\Developpement $developpement
+     *
+     * @return TypeDeveloppement
+     */
+    public function addDeveloppement(\AppBundle\Entity\Developpement $developpement)
+    {
+        $this->developpements[] = $developpement;
+
+        return $this;
+    }
+
+    /**
+     * Remove developpement
+     *
+     * @param \AppBundle\Entity\Developpement $developpement
+     */
+    public function removeDeveloppement(\AppBundle\Entity\Developpement $developpement)
+    {
+        $this->developpements->removeElement($developpement);
+    }
+
+    /**
+     * Get developpements
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getDeveloppements()
+    {
+        return $this->developpements;
+    }
 }

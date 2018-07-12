@@ -63,3 +63,4 @@ class FacteurGainTotal
         return $this->facteur;
     }
 }
+
