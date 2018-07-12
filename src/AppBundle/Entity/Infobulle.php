@@ -38,6 +38,13 @@ class Infobulle
     /**
      * @var string
      *
+     * @ORM\Column(name="source", type="string", length=255)
+     */
+    private $source;
+
+    /**
+     * @var string
+     *
      * @ORM\Column(name="lien", type="string", length=255)
      */
     private $lien;
@@ -123,5 +130,29 @@ class Infobulle
     public function getLien()
     {
         return $this->lien;
+    }
+
+    /**
+     * Set source.
+     *
+     * @param string $source
+     *
+     * @return Infobulle
+     */
+    public function setSource($source)
+    {
+        $this->source = $source;
+
+        return $this;
+    }
+
+    /**
+     * Get source.
+     *
+     * @return string
+     */
+    public function getSource()
+    {
+        return $this->source;
     }
 }

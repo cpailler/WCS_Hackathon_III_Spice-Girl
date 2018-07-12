@@ -187,7 +187,9 @@
 
                                 <h2>{{ infobulle.titre }}</h2>
                                 <p>{{ infobulle.description }}</p>
-                                <p class="text-secondary" style="font-size: 0.9vw;">{{ infobulle.lien }}</p>
+                                <a href="{{ infobulle.lien }}" target="_blank">
+                                    <p class="text-secondary" style="font-size: 0.9vw;">source : {{ infobulle.source }}</p>
+                                </a>
 
                                 <div>
                                     <button class="close_info_bulles">J'ai compris !</button>
