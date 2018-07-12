@@ -32,7 +32,7 @@ class EndOfTurnController extends Controller
         $gainDuTour = 0;
         $rapportTruque = $em->getRepository(Atout::class)->findOneBy(array('id'=>1));
         foreach ($departements as $departement){
-            if ($departement->getUsine()==1){
+            if ($departement->getUsine()){
                 $departement->setNiveauPollution(min(100, $departement->getNiveauPollution()
                     +$facteurPollutionGlobal->getFacteur()));
                 if ($departement->getNiveauPollution()>=50){
@@ -41,37 +41,41 @@ class EndOfTurnController extends Controller
                 else{
                     $impactProduction = 1;
                 }
-                $gainMax +=round(300*$facteurGainTotal);
-                $gainDuTour += round(300*$facteurGainTotal*$impactProduction);
+                $gainMax +=round(300*$facteurGainTotal->getFacteur());
+                $gainDuTour += round(300*$facteurGainTotal->getFacteur()*$impactProduction);
             }
             $pollutionTotale += $departement->getNiveauPollution();
             $em->persist($departement);
         }
+
+        dump($gainDuTour);
         if ($rapportTruque->getQuantite() != 1){
-            $gainDuTour*=floor(1-(0.1+0.3*$facteurPollutionGlobal->getFacteur()));
+            $gainDuTour = floor($gainDuTour*(1-(0.1+0.3*($niveauPollutionGlobal->getNiveauGlobal()/100))));
         }else{
             $rapportTruque->setQuantite(0);
             $em->persist($rapportTruque);
         }
 
-        $banque->setMoney($gainDuTour);
+        dump($gainDuTour);
+        $banque->setMoney($banque->getMoney()+$gainDuTour);
 
-        $niveauPollutionGlobal->setNiveauPollution(round($pollutionTotale/10, 2));
+        $niveauPollutionGlobal->setNiveauGlobal(round($pollutionTotale/10, 2));
 
-        $event = $em->getRepository(EventAleatoire::class)->findBy(array('actif'=>1))[0];
-        if ($event->getId()==1){
-            $banque->setMoney($banque->getMoney()-$gainMax);
-            $event->setActif(0);
+        $events = $em->getRepository(EventAleatoire::class)->findBy(array('actif'=>1));
+        foreach($events as $event){
+            if ($event->getId() == 1) {
+                $banque->setMoney($banque->getMoney() - $gainMax);
+                $event->setActif(0);
+            } elseif ($event->getId() == 2) {
+                $banque->setMoney($banque->getMoney() - $gainMax * $facteurPollutionGlobal->getFacteur() / 100);
+                $event->setActif(0);
+            } elseif ($event->getId() == 3) {
+                $banque->setMoney($banque->getMoney() - $gainMax * 2);
+                $event->setActif(0);
+            }
+            $em->persist($event);
         }
-        elseif ($event->getId()==2){
-            $banque->setMoney($banque->getMoney()-$gainMax*$facteurPollutionGlobal->getFacteur()/100);
-            $event->setActif(0);
-        }
-        elseif ($event->getId()==3){
-            $banque->setMoney($banque->getMoney()-$gainMax*2);
-            $event->setActif(0);
-        }
-        $em->persist($event);
+
         $em->persist($banque);
         $em->flush();
         if ($banque->getMoney()<0){
@@ -84,7 +88,7 @@ class EndOfTurnController extends Controller
             $rand = rand(0,100);
             if ($rand<15){
                 $event = $em->getRepository(EventAleatoire::class)->findAll()[floor($rand/5)];
-                if ($event->getPollutionApparition()<=$niveauPollutionGlobal->getNiveauPollution()){
+                if ($event->getPollutionApparition()<=$niveauPollutionGlobal->getNiveauGlobal()){
                     $event->setActif(1);
                     $em->persist($event);
                     $em->flush();

@@ -130,4 +130,28 @@ class EventAleatoire
     {
         return $this->pollutionApparition;
     }
+
+    /**
+     * Set actif
+     *
+     * @param boolean $actif
+     *
+     * @return EventAleatoire
+     */
+    public function setActif($actif)
+    {
+        $this->actif = $actif;
+
+        return $this;
+    }
+
+    /**
+     * Get actif
+     *
+     * @return boolean
+     */
+    public function getActif()
+    {
+        return $this->actif;
+    }
 }
