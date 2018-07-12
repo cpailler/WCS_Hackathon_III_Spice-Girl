@@ -87,11 +87,11 @@
                                     <div class="col-4"><h2>{{ typeDeveloppement.type }}</h2>
                                         {% for developpement in typeDeveloppement.developpements %}
                                             <a href="{{ path('achat_developpement', {'id':developpement.id}) }}">
-                                                <button class="show-modal-dev open-modal">{{ developpement.nom }}</button>
+                                                <button class="show-modal-dev open-modal sousType">{{ developpement.nom }}</button>
                                             </a>
-                                            <p class="description">{{ developpement.description }}</p>
+                                            <p class="description">{{ developpement.description }}<br></p>
                                             <p><img class="mini_icon"
-                                                    src="{{ asset('build/images/piggy_bank.a0482efe.png') }}"><br>
+                                                    src="{{ asset('build/images/piggy_bank.a0482efe.png') }}">
                                                 <strong id="prix">{{ developpement.prix * facteurInflation.facteur |round }}
                                                     K€</strong></p>
                                         {% endfor %}
@@ -147,7 +147,7 @@
                                 {% for atouts in atout %}
                                     <div class="col-4">
                                         <a href="{{ path('achat_atout', {'id':atouts.id}) }}">
-                                            <button class="show-modal-dev open-modal">{{ atouts.nom }}</button>
+                                            <button class="show-modal-dev open-modal ">{{ atouts.nom }}</button>
                                         </a>
                                         <p class="description">{{ atouts.description }}</p>
                                     </div>
@@ -155,7 +155,7 @@
                             </div>
                         </div>
                         <a href="{{ path('end_of_turn') }}">
-                            <button class="show-modal-dev open-modal">Fin de tour</button>
+                            <button class="show-modal-dev open-modal ">Fin de tour</button>
                         </a>
 
 
