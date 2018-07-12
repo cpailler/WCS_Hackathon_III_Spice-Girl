@@ -8,10 +8,6 @@
     <div class="container-fluid">
         <div class="row">
             <div class="col-9 map">
-                <div class="progress">
-                    <div class="progress-bar" role="progressbar" style="width: 60%;">
-                    </div>
-                </div>
                 <svg id="grandEst" width="100%" height="90%" viewBox="307 50 200 200">
                     /<!--LES REGIONS-->
                     <path id="hauteMarne" class="region"
@@ -66,13 +62,10 @@
                                  alt="user" class="rounded-circle"/>
                             <h5 class="text-light user-name">Personnage</h5>
                             <p class="text-secondary user-area">{{ banque.money }} K€</p><br/>
-                            <img class="mini_icon" src="{{ asset('build/images/cheminee_ga.0ab032e6.png') }}">
-                            <p class="text-secondary user-area">Niveau de Pollution global
-                                : {{ niveauPollution.niveauGlobal|round }}%</p>
-                            <img class="mini_icon" src="{{ asset('build/images/dollar.276bfed5.png') }}">
-                            <p class="text-secondary user-area">Niveau d'inflation : {{ facteurInflation.facteur |round }}</p>
-                            <img class="mini_icon" src="{{ asset('build/images/dollar.276bfed5.png') }}">
-                            <p class="text-secondary user-area">Revenus max par tour : {{ (300*nbUsines*facteurGain.facteur) | round }} K€</p>
+                            <p class="navbar_detail"><img class="mini_icon" src="{{ asset('build/images/cheminee_ga.0ab032e6.png') }}">  :  Niveau de Pollution global
+                                : {{ niveauPollution.niveauGlobal }}</p>
+                            <p class="navbar_detail"><img class="mini_icon" src="{{ asset('build/images/fleche_ga.b4c5b25c.png') }}">  :  Niveau d'inflation : {{ facteurInflation.facteur }}</p>
+                            <p class="navbar_detail"><img class="mini_icon" src="{{ asset('build/images/dollar.276bfed5.png') }}">  :  Revenus par tour : {{ facteurGain.facteur }} K€</p>
                         </div>
                     </div>
 

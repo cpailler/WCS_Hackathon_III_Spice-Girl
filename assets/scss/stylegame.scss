@@ -24,22 +24,6 @@ $niv8:#fe5e00;
 $niv9:#fe0000;
 $niv10:maroon;
 
-// BAR DE PROGRESSION DE LA GALERE
-
-.progress {
-  height: 20px;
-  box-shadow: none;
-  -webkit-box-shadow: none;
-  background-image: -webkit-gradient(linear, left top, right top, from(rgba(230, 230, 230, 0.3)), to(rgba(230, 230, 230, 0.8)), color-stop(.2, #fff));
-  background-color: #120e0e !important;
-}
-
-.progress-bar {
-  box-shadow: none;
-  -webkit-box-shadow: none;
-  background: linear-gradient(135deg, #3db48e 0%, #5dca5f 10%, #99e600 20%, #c3f001 30%, #ff0 40%, #fed201 50%, #ffaa01 60%, #fe5e00 70%, #fe0000 80%, maroon 100%);
-}
-
 // CARTOUNETTE
 
 .region {
@@ -96,7 +80,12 @@ $niv10:maroon;
 // NAVBAR
 
 .avatar {
-  width: 150px;
+  width: 120px;
+}
+
+.navbar_detail {
+  color: white;
+  font-size: 0.75em;
 }
 
 .side-navbar {
@@ -149,11 +138,11 @@ nav.side-open.open span, h5, h5 + p {
 // AMPOULE IMAGE ET POPUP
 
 .info_bulles {
-  margin-top: 8vh;
+  margin-top: 4vh;
 }
 
 .info_bulles img {
-  width: 5vw;
+  width: 3vw;
 }
 
 .close_info_bulles {
@@ -676,7 +665,7 @@ nav.side-open.open span, h5, h5 + p {
 // POPUP
 
 .mini_icon {
-  width: 2.2vw;
+  width: 2vw;
 }
 
 .open-modal {
@@ -684,7 +673,7 @@ nav.side-open.open span, h5, h5 + p {
   border: none;
   color: #fff;
   outline: none;
-  padding: 20px 20px;
+  padding: 14px 20px;
   width: 24vw;
 }
 
