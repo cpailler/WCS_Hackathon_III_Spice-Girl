@@ -107,7 +107,7 @@
                                             <p class="description">{{ developpement.description }}<br></p>
                                             <p><img class="mini_icon"
                                                     src="{{ asset('build/images/piggy_bank.a0482efe.png') }}">
-                                                <strong id="prix">{{ developpement.prix * facteurInflation.facteur |round }}
+                                                <strong id="prix">{{ (developpement.prix * facteurInflation.facteur |round)|number_format(0, ' ', ',') }}
                                                     K€</strong></p>
                                         {% endfor %}
                                     </div>
@@ -136,7 +136,7 @@
                                     </a>
                                     <p><img class="mini_icon"
                                             src="{{ asset('build/images/piggy_bank.a0482efe.png') }}">
-                                        <strong id="prix">{{ 500 * facteurInflation.facteur |round }}
+                                        <strong id="prix">{{ (500 * facteurInflation.facteur |round)|number_format(0, ' ', ',') }}
                                             K€</strong></p>
                                 </div>
                                 <div class="col-5"><h1>Départements diponibles</h1>
@@ -169,6 +169,10 @@
                                         </a>
                                         <p class="description">{{ atouts.description }}</p>
                                     </div>
+                                    <p><img class="mini_icon"
+                                            src="{{ asset('build/images/piggy_bank.a0482efe.png') }}">
+                                        <strong id="prix">{{ (atouts.prix * facteurInflation.facteur |round)|number_format(0, ' ', ',') }}
+                                            K€</strong></p>
                                 {% endfor %}
                             </div>
                         </div>
