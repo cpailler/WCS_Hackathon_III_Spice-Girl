@@ -9,6 +9,17 @@ Encore
     .addEntry('css/stylegame', './assets/scss/stylegame.scss')
     .addEntry('js/stylegame', './assets/js/stylegame.js')
 
+    // Transfert des images dans build/images.
+    .addEntry('images/ampoule_ga', './assets/images/ampoule_ga.png')
+    .addEntry('images/cheminee_ga', './assets/images/cheminee_ga.png')
+    .addEntry('images/femme_ga', './assets/images/femme_ga.png')
+    .addEntry('images/grand_asthme', './assets/images/grand_asthme.png')
+    .addEntry('images/homme_ga', './assets/images/homme_ga.png')
+    .addEntry('images/pluie_ga', './assets/images/pluie_ga.png')
+    .addEntry('images/usine2_ga', './assets/images/usine2_ga.png')
+    .addEntry('images/usine_ga', './assets/images/usine_ga.png')
+    .addEntry('images/voiture_ga', './assets/images/voiture_ga.png')
+
     .cleanupOutputBeforeBuild()
     .enableBuildNotifications()
     .enableSassLoader()

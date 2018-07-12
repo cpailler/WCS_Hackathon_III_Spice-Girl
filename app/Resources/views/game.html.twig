@@ -68,18 +68,15 @@
                         <div class="modal-dev">
                             <a class="close-modal-dev" href="#">X</a>
                             <div class="row">
-                                <div class="col-4"><h1>twig dev</h1>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Incidunt
-                                    sit quas aut labore nam quis qui eos quasi soluta sunt nihil voluptate expedita.
-                                    Aliquam aliquid excepturi ex ab fuga ipsa?
+                                {% for typeDeveloppement in typeDeveloppements %}
+                                <div class="col-4"><h1>{{ typeDeveloppement.type }}</h1>
+                                    {% for developpement in typeDeveloppement.developpements %}
+                                        <a href="{{ path('achat_developpement', {'id':developpement.id}) }}">
+                                            <button>{{ developpement.nom }}</button>
+                                        </a>
+                                    {% endfor %}
                                 </div>
-                                <div class="col-4"><h1>twig dev</h1>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Incidunt
-                                    sit quas aut labore nam quis qui eos quasi soluta sunt nihil voluptate expedita.
-                                    Aliquam aliquid excepturi ex ab fuga ipsa?
-                                </div>
-                                <div class="col-4"><h1>twig dev</h1>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Incidunt
-                                    sit quas aut labore nam quis qui eos quasi soluta sunt nihil voluptate expedita.
-                                    Aliquam aliquid excepturi ex ab fuga ipsa?
-                                </div>
+                                {% endfor %}
                             </div>
                         </div>
 
