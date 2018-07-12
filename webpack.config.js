@@ -25,7 +25,6 @@ Encore
     .addEntry('images/dollar', './assets/images/dollar.png')
 
     .addEntry('homepage', './assets/scss/homepage.scss')
-    .addEntry('homepageJS', './assets/js/homepageJS.js')
     .cleanupOutputBeforeBuild()
     .enableBuildNotifications()
     .enableSassLoader()
