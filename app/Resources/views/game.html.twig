@@ -75,7 +75,7 @@
                             <p class="navbar_detail"><img class="mini_icon" src="{{ asset('build/images/cheminee_ga.0ab032e6.png') }}">  :  Niveau de Pollution global
                                 : {{ niveauPollution.niveauGlobal|round }}%</p>
                             <p class="navbar_detail"><img class="mini_icon" src="{{ asset('build/images/fleche_ga.b4c5b25c.png') }}">  :  Niveau d'inflation : {{ facteurInflation.facteur|round(2) }}</p>
-                            <p class="navbar_detail"><img class="mini_icon" src="{{ asset('build/images/dollar.276bfed5.png') }}">  :  Revenus par tour : (300*nbUsines*facteurGain.facteur) | round }} K€</p>
+                            <p class="navbar_detail"><img class="mini_icon" src="{{ asset('build/images/dollar.276bfed5.png') }}">  :  Revenus par tour : {{ (300*nbUsines*facteurGain.facteur) | round }} K€</p>
                         </div>
                     </div>
 
