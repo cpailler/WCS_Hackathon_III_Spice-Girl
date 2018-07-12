@@ -21,7 +21,7 @@ class ExpansionController extends Controller
         $em = $this->getDoctrine()->getManager();
         $banque = $em->getRepository(Banque::class)->findAll()[0];
         $facteurInflation = $em->getRepository(FacteurInflationGlobal::class)->findAll()[0];
-        $departements = $em->getRepository(Departement::class)->findBy(array('usine'=>0));
+        $departements = $em->getRepository(Departement::class)->findBy(array('usine'=>false));
         if ($banque->getMoney()<ceil(500*$facteurInflation->getFacteur())){
             $this->addFlash('danger', 'Vous ne disposez pas des fonds nécessaires à cet achat!');
         }
@@ -30,7 +30,7 @@ class ExpansionController extends Controller
         }
         else{
             $em->persist($banque->setMoney($banque->getMoney()-ceil(500*$facteurInflation->getFacteur())));
-            $em->persist($departements[floor(rand(0,count($departements)))]->setUsine(1));
+            $em->persist($departements[floor(rand(0,count($departements)-1))]->setUsine(1));
             $em->flush();
         }
 
