@@ -23,6 +23,8 @@ Encore
     .addEntry('images/voiture_ga', './assets/images/voiture_ga.png')
     .addEntry('images/piggy_bank', './assets/images/piggy_bank.png')
     .addEntry('images/dollar', './assets/images/dollar.png')
+    .addEntry('images/fleche_ga', './assets/images/fleche_ga.png')
+
 
     .addEntry('homepage', './assets/scss/homepage.scss')
     .addEntry('homepageJS', './assets/js/homepageJS.js')
