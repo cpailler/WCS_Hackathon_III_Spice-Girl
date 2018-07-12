@@ -69,6 +69,12 @@ class Developpement
      */
     private $facteurGain;
 
+    /**
+     * @var bool
+     *
+     * @ORM\Column(name="effectif", type="boolean")
+     */
+    private $effectif=0;
 
     /**
      * Get id
@@ -246,5 +252,29 @@ class Developpement
     public function getType()
     {
         return $this->type;
+    }
+
+    /**
+     * Set effectif
+     *
+     * @param boolean $effectif
+     *
+     * @return Developpement
+     */
+    public function setEffectif($effectif)
+    {
+        $this->effectif = $effectif;
+
+        return $this;
+    }
+
+    /**
+     * Get effectif
+     *
+     * @return boolean
+     */
+    public function getEffectif()
+    {
+        return $this->effectif;
     }
 }

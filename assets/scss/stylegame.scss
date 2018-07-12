@@ -16,7 +16,7 @@ html,body {
 $niv1:#3db48e;
 $niv2:#5dca5f;
 $niv3:#99e600;
-$niv4:c3f001;
+$niv4:#c3f001;
 $niv5:#ff0;
 $niv6:#fed201;
 $niv7:#ffaa01;
@@ -193,7 +193,11 @@ nav.side-open.open span, h5, h5 + p{
 }
 
 .dvpt{
-  margin-top: -2vw;
+  margin-top: -3vw;
+}
+
+#prix{
+  color: #3db48e;
 }
 
 
