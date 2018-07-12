@@ -12,7 +12,6 @@ use AppBundle\Entity\FacteurInflationGlobal;
 use AppBundle\Entity\FacteurPollutionGlobal;
 use AppBundle\Entity\NiveauPollutionGlobal;
 use AppBundle\Entity\TypeDeveloppement;
-use AppBundle\Entity\FacteurInflationGlobal;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
@@ -48,7 +47,7 @@ class GameController extends Controller
             'developpements' => $developpements,
             'eventAleatoire' => $eventAleatoire,
             'niveauPollution' => $niveauPollution,
-            'typeDeveloppement' => $typeDeveloppement
+            'typeDeveloppements' => $typeDeveloppement
         ));
     }
 }
