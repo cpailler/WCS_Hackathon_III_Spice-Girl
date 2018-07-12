@@ -54,7 +54,7 @@ class Departement
      *
      * @ORM\Column(name="usine", type="boolean")
      */
-    private $usine;
+    private $usine = 0;
 
 
     /**
