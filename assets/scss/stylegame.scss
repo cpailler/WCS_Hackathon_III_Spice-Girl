@@ -749,3 +749,18 @@ nav.side-open.open span, h5, h5 + p {
   text-align: center;
 }
 
+/*Fin de tour*/
+
+
+.finTour {
+  background-color: #721413;
+  border: none;
+  color: #fff;
+  outline: none;
+  padding: 14px 20px;
+  width: 24vw;
+}
+
+.finTour:hover {
+  background-color: #8f1918;
+}
