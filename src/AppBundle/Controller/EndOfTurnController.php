@@ -24,7 +24,7 @@ class EndOfTurnController extends Controller
         $departements = $em->getRepository(Departement::class)->findAll();
         $facteurPollutionGlobal = $em->getRepository(FacteurPollutionGlobal::class)->findAll()[0];
         $facteurGainTotal = $em->getRepository(FacteurGainTotal::class)->findAll()[0];
-        $nbBarAOxygene = $em->getRepository(Atout::class)->findOneBy(array('id'=>2));
+        $nbBarAOxygene = $em->getRepository(Atout::class)->findOneBy(array('id'=>2))->getQuantite();
         $banque = $em->getRepository(Banque::class)->findAll()[0];
         $niveauPollutionGlobal = $em->getRepository(NiveauPollutionGlobal::class)->findAll()[0];
         $pollutionTotale = 0;
