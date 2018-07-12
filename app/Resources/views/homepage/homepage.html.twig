@@ -93,13 +93,20 @@
                         <div class="hideme">
                             <div class="container"></div>
                             <div class="cube">
-                                <div class="default-state">
-                                    <span>Choose the Shithead</span>
-                                </div>
+                                <a href="{{ path('initial', {id:1}) }}" class="bouton-basique">
+                                    <div class="default-state">
+                                        <a href="{{ path('initial', {id:1}) }}" class="bouton-basique">
+                                            <span>Choose the Shithead</span>
+                                        </a>
+                                    </div>
+                                </a>
                                 <div class="active-state">
-                                    <span>Germain</span>
+                                    <a href="{{ path('initial', {id:1}) }}" class="bouton-hover">
+                                        <span>Germain</span>
+                                    </a>
                                 </div>
                             </div>
+                            <a href="{{ path('initial', {id:1}) }}" class="bouton-basique">test</a>
                         </div>
                     </div>
 
@@ -110,10 +117,14 @@
                             <div class="container"></div>
                             <div class="cube">
                                 <div class="default-state">
-                                    <span>Choose The Bitch</span>
+                                    <a href="{{ path('initial', {id:2}) }}" class="bouton-basique">
+                                        <span>Choose The Bitch</span>
+                                    </a>
                                 </div>
-                                <div class="active-state">
-                                    <span>Germaine</span>
+                                <div class="active-state bouton-hover">
+                                    <span>
+                                        <a href="{{ path('initial', {id:2}) }}">Germaine</a>
+                                    </span>
                                 </div>
                             </div>
                         </div>
