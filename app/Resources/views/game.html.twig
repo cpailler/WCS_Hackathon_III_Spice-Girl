@@ -76,7 +76,8 @@
                                             <button class="show-modal-dev open-modal">{{ developpement.nom }}</button>
                                         </a>
                                         <p class="description">{{ developpement.description }}</p>
-                                        <p><img src="build/image/"><strong id="prix">{{ developpement.prix * facteurInflation.facteur |round}}K€</strong></p>
+                                        <p><img class="mini_icon" src="{{ asset('build/images/piggy_bank.a0482efe.png') }}"><br>
+                                            <strong id="prix">{{ developpement.prix * facteurInflation.facteur |round}}K€</strong></p>
 
                                     {% endfor %}
                                 </div>
