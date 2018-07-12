@@ -38,7 +38,6 @@ class GameController extends Controller
         foreach ($departements as $departement){
             switch ($departement->getNiveauPollution()){
                 case $departement->getNiveauPollution()<10 :
-                    dump($departement->getNiveauPollution());
                     $couleur[$departement->getNomCamelCase()] = "#3db48e";
                     break;
                 case $departement->getNiveauPollution()<20 :
@@ -66,7 +65,6 @@ class GameController extends Controller
                     $couleur[$departement->getNomCamelCase()] = "#fe0000";
                     break;
                 default :
-                    dump($departement);
                     $couleur[$departement->getNomCamelCase()] = "maroon";
                     break;
 

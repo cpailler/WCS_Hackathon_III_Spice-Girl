@@ -6,6 +6,7 @@ use AppBundle\Entity\Atout;
 use AppBundle\Entity\Banque;
 use AppBundle\Entity\Departement;
 use AppBundle\Entity\Developpement;
+use AppBundle\Entity\FacteurGainTotal;
 use AppBundle\Entity\FacteurInflationGlobal;
 use AppBundle\Entity\FacteurPollutionGlobal;
 use AppBundle\Entity\NiveauPollutionGlobal;
@@ -15,7 +16,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Component\HttpFoundation\Request;
 
 
-/*
+/**
  * Initialisation controller.
  *
  * @Route("/initial")
@@ -33,6 +34,7 @@ class InitialisationController extends Controller
         $facteurInflationGlobals = $em->getRepository(FacteurInflationGlobal::class)->findAll();
         $facteurPollutionGlobals = $em->getRepository(FacteurPollutionGlobal::class)->findAll();
         $niveauPollutionGlobals = $em->getRepository(NiveauPollutionGlobal::class)->findAll();
+        $facteurGainTotal = $em->getRepository(FacteurGainTotal::class)->findAll()[0];
         $atouts = $em->getRepository(Atout::class)->findAll();
         $banques = $em->getRepository(Banque::class)->findAll();
         $personnages = $em->getRepository(Personnage::class)->findBy(array('actif'=>1));
@@ -46,10 +48,10 @@ class InitialisationController extends Controller
 
         foreach ($departements as $departement) {
             $departement->setUsine(0);
-            $niveauxPollution[] = $departement->setNiveauPollution(rand(0.1,5))->getNiveauPollution();
+            $niveauxPollution[] = $departement->setNiveauPollution(rand(1,5))->getNiveauPollution();
             $em->persist($departement);
-            $em->persist($departement[floor(rand(0,10))]->setUsine(1));
         }
+        $em->persist($departements[floor(rand(0,9))]->setUsine(1));
 
         foreach ($developpements as $developpement) {
             $developpement->setEffectif(0);
@@ -82,9 +84,9 @@ class InitialisationController extends Controller
             $banque->setMoney(500);
             $em->persist($banque);
         }
-
+        $facteurGainTotal->setFacteur(1);
         $em->flush();
-        $this->redirectToRoute('game');
+        return $this->redirectToRoute('game');
 
     }
 
