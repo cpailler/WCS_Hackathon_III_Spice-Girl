@@ -11,6 +11,13 @@ Encore
 
     .cleanupOutputBeforeBuild()
     .enableBuildNotifications()
-    .enableSassLoader();
+    .enableSassLoader()
+
+// allows legacy applications to use $/jQuery as a global variable
+    .autoProvidejQuery()
+
+// this creates a 'jquery_jqueryUi.js' file with jquery and the jQuery UI module
+    .createSharedEntry('jquery_jqueryUi', ['jquery', 'jquery-ui']);
+
 
 module.exports = Encore.getWebpackConfig();
