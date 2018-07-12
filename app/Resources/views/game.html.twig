@@ -15,7 +15,7 @@
                     </div>
                 </div>
                 <svg id="grandEst" width="100%" height="90%" viewBox="307 50 200 200">
-                    // LES REGIONS
+                    /<!--LES REGIONS-->
                     <path id="hauteMarne" class="region"
                           d="M 379.09375,139.71875 374.5,140.5 l -0.59375,4.9375 -4.15625,2.96875 -2.15625,-0.75 -1.03125,2.15625 -0.1875,2.96875 3.5625,4.96875 3.375,1.1875 0.78125,4.15625 0.21875,7.125 -1.1875,1.78125 -3.375,0.21875 -2.1875,1.96875 1.59375,1 0.65625,2.5 2.34375,1.3125 3.5,3.71875 4.5,6.0625 -2.53125,2.71875 1.75,1.1875 0.1875,3.3125 3.125,-0.1875 0.78125,1.5625 2.34375,0.1875 1.75,-0.96875 3.125,3.90625 0.40625,0.96875 4.28125,-0.96875 0.8125,-1.96875 0.1875,0.0312 0,-1.96875 2.71875,-1.1875 3.125,1.1875 2.9375,-1.1875 1.75,0 0.59375,-3.9062 0.96875,-1.15625 -1.75,-0.1875 -0.1875,-2.34375 2.71875,-0.59375 0.1875,-1.5625 2.75,0 0,-2.53125 2.15625,-0.78125 -0.59375,-1.5625 0.59375,-0.375 L 412.5625,179 l -2.125,0.78125 0,-4.09375 -5.46875,-2.71875 1.15625,-5.28125 1.75,-1.1875 -0.5625,-1.75 -2.5625,-0.375 -0.5625,-2.5625 -2.34375,0 -2.75,-3.6875 -3.125,-0.21875 -1.34375,-1.9375 1.75,-1.75 -4.125,-4.5 -1.75,-0.59375 -4.6875,-2.34375 -2.53125,-2.71875 -4.09375,-0.59375 -0.0937,-3.75 z"
                           inkscape:label="#path15265" inkscape:connector-curvature="0" style="fill: {{ couleur.hauteMarne }}"/>
@@ -49,6 +49,7 @@
                 </svg>
             </div>
             <div class="col-3">
+                <!--NAVBAR-->
                 <nav class="side-navbar side-open position-fixed">
                     <div class="side-navbar-wrapper">
                         <div class="sidenav-header-inner text-center justify-content-center py-5">
@@ -134,7 +135,28 @@
                             </div>
                         </div>
 
+
+                        <div class="info_bulles">
+                            <a href="#" class="open btn btn-big"><img src="{{ asset('build/images/ampoule_ga.84585f31.png') }}"></a>
+                        </div>
+                        <div id="somedialog" class="dialog">
+                            <div class="dialog-overlay"></div>
+                            <div class="dialog-content">
+
+                                <h2>{{ infobulle.titre }}</h2>
+                                <p>{{ infobulle.description }}</p>
+                                <p class="text-secondary" style="font-size: 0.9vw;">{{ infobulle.lien }}</p>
+
+                                <div>
+                                    <button class="close_info_bulles">J'ai compris !</button>
+                                </div>
+                            </div>
+                        </div>
+
+
                     </div>
+
+
                 </nav>
             </div>
         </div>
