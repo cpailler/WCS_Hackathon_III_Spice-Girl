@@ -101,14 +101,21 @@
                                 {% for typeDeveloppement in typeDeveloppements %}
                                     <div class="col-4"><h2>{{ typeDeveloppement.type }}</h2>
                                         {% for developpement in typeDeveloppement.developpements %}
+                                            {% if developpement.effectif==0 %}
                                             <a href="{{ path('achat_developpement', {'id':developpement.id}) }}">
                                                 <button class="show-modal-dev open-modal sousType">{{ developpement.nom }}</button>
                                             </a>
-                                            <p class="description">{{ developpement.description }}<br></p>
-                                            <p><img class="mini_icon"
-                                                    src="{{ asset('build/images/piggy_bank.a0482efe.png') }}">
-                                                <strong id="prix">{{ developpement.prix * facteurInflation.facteur |round }}
-                                                    K€</strong></p>
+                                                <p class="description">{{ developpement.description }}<br></p>
+                                                <p><img class="mini_icon"
+                                                        src="{{ asset('build/images/piggy_bank.a0482efe.png') }}">
+                                                    <strong id="prix">{{ developpement.prix * facteurInflation.facteur |round }}
+                                                        K€</strong></p>
+                                            {% else %}
+                                                <button class="show-modal-dev open-modal sousType" style="background-color: gray">{{ developpement.nom }}</button>
+                                                <p class="description">{{ developpement.description }}<br></p>
+                                                <p>
+                                                    <strong id="prix">Déjà acheté</strong></p>
+                                            {% endif %}
                                         {% endfor %}
                                     </div>
                                 {% endfor %}
@@ -162,13 +169,20 @@
                             <h1>Magouilles</h1>
                             <div class="row">
 
-                                {% for atouts in atout %}
+                                {% for atout in atouts %}
+                                    {% if (atout.id == 1 and atout.quantite == 0) or (atout.id == 2 and atout.quantite <10)  %}
                                     <div class="col-4">
-                                        <a href="{{ path('achat_atout', {'id':atouts.id}) }}">
-                                            <button class="show-modal-dev open-modal ">{{ atouts.nom }}</button>
+                                        <a href="{{ path('achat_atout', {'id':atout.id}) }}">
+                                            <button class="show-modal-dev open-modal ">{{ atout.nom }}</button>
                                         </a>
-                                        <p class="description">{{ atouts.description }}</p>
+                                        <p class="description">{{ atout.description }}</p>
                                     </div>
+                                    {% else %}
+                                        <div class="col-4">
+                                            <button class="show-modal-dev open-modal " style="background-color: gray">{{ atout.nom }}</button>
+                                            <p class="description">{{ atout.description }}</p>
+                                        </div>
+                                    {% endif %}
                                 {% endfor %}
                             </div>
                         </div>
