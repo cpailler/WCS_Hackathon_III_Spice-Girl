@@ -39,49 +39,42 @@ class InitialisationController extends Controller
             $niveauxPollution[] = $departement->setNiveauPollution(rand(0,5))->getNiveauPollution();
             $em->persist($departement);
             $em->persist($departement[floor(rand(0,10))]->setUsine(1));
-
         }
 
         foreach ($developpements as $developpement) {
             $developpement->setEffectif(0);
             $em->persist($developpement);
-
         }
 
         foreach ($facteurInflationGlobals as $facteurInflationGlobal) {
             $facteurInflationGlobal->setFacteur(1);
             $em->persist($facteurInflationGlobal);
-
         }
 
         foreach ($facteurPollutionGlobals as $facteurPollutionGlobal) {
             $facteurPollutionGlobal->setFacteur(1);
             $em->persist($facteurPollutionGlobal);
-
         }
+
         foreach ($niveauPollutionGlobals as $niveauPollutionGlobal) {
             //calcul en fonction du niveau initial des regions
 
             $sommeNiveauPollutionGlobal = array_sum($niveauxPollution)/10;
             $niveauPollutionGlobal->setNiveauGlobal($sommeNiveauPollutionGlobal);
             $em->persist($niveauPollutionGlobal);
-
         }
         foreach ($atouts as $atout) {
             $atout->setQuantite(0);
             $em->persist($atout);
-
         }
 
         foreach ($banques as $banque) {
             $banque->setMoney(500);
             $em->persist($banque);
-
         }
 
         $em->flush();
         $this->redirectToRoute('page_jeu');
-
 
     }
 

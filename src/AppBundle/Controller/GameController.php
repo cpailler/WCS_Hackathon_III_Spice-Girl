@@ -3,11 +3,15 @@
 namespace AppBundle\Controller;
 
 use AppBundle\Entity\Atout;
+use AppBundle\Entity\Banque;
 use AppBundle\Entity\Departement;
 use AppBundle\Entity\Developpement;
 use AppBundle\Entity\EventAleatoire;
+use AppBundle\Entity\FacteurGainTotal;
+use AppBundle\Entity\FacteurPollutionGlobal;
 use AppBundle\Entity\NiveauPollutionGlobal;
 use AppBundle\Entity\TypeDeveloppement;
+use AppBundle\Entity\FacteurInflationGlobal;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
