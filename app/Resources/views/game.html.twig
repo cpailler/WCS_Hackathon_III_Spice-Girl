@@ -107,7 +107,7 @@
                                             <p class="description">{{ developpement.description }}<br></p>
                                             <p><img class="mini_icon"
                                                     src="{{ asset('build/images/piggy_bank.a0482efe.png') }}">
-                                                <strong id="prix">{{ developpement.prix * facteurInflation.facteur |round }}
+                                                <strong id="prix">{{ developpement.prix * facteurInflation.facteur |round |number_format(0, ' ', ',')}}
                                                     K€</strong></p>
                                         {% endfor %}
                                     </div>
