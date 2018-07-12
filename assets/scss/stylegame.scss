@@ -24,6 +24,30 @@ $niv8:#fe5e00;
 $niv9:#fe0000;
 $niv10:maroon;
 
+// GAMER
+
+.gamer {
+  background: #120e0e;
+}
+
+.navbar_detail {
+  color: white;
+  font-size: 0.75em;
+}
+.navbar_detail li {
+  display: inline;
+}
+
+li {
+  padding: 1vw;
+}
+
+.legend {
+  height: 1vw;
+  background: linear-gradient(to right, $niv1, $niv2, $niv3, $niv4, $niv5, $niv6, $niv7, $niv8, $niv9, $niv10);
+}
+
+
 // CARTOUNETTE
 
 .region {
@@ -81,11 +105,6 @@ $niv10:maroon;
 
 .avatar {
   width: 120px;
-}
-
-.navbar_detail {
-  color: white;
-  font-size: 0.75em;
 }
 
 .side-navbar {
