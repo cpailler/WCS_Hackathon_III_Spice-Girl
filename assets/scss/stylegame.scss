@@ -1,13 +1,8 @@
-* {
-  box-sizing: border-box;
-}
 
 html, body {
   min-height: 100%;
   height: 100%;
-  background-color: #4e555b !important; //à changer
-  background-size: cover;
-  background-position: top center;
+  background-color: #3b4045 !important; //à changer
   font-weight: 200;
 }
 
@@ -28,6 +23,7 @@ $niv10:maroon;
 
 .gamer {
   background: #120e0e;
+  width: 100%;
 }
 
 .navbar_detail {
@@ -39,7 +35,7 @@ $niv10:maroon;
 }
 
 li {
-  padding: 1vw;
+  margin: 4vw;
 }
 
 .legend {
