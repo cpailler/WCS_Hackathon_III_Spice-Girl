@@ -35,6 +35,6 @@ class ExpansionController extends Controller
         }
 
 
-        return $this->redirectToRoute('page_jeu');
+        return $this->redirectToRoute('game');
     }
 }

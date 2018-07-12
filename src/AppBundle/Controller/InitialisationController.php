@@ -74,7 +74,7 @@ class InitialisationController extends Controller
         }
 
         $em->flush();
-        $this->redirectToRoute('page_jeu');
+        $this->redirectToRoute('game');
 
     }
 

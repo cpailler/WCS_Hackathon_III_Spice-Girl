@@ -69,6 +69,12 @@ class Developpement
      */
     private $facteurGain;
 
+    /**
+     * @var bool
+     *
+     * @ORM\Column(name="effectif", type="boolean")
+     */
+    private $effectif=0;
 
     /**
      * Get id
