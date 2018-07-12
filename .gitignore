@@ -18,3 +18,9 @@
 *.idea*
 *DS_Store*
 /node_modules/
+
+grandasthme\.sql
+
+grandasthme
+
+package-lock\.json

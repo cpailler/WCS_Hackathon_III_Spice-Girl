@@ -42,6 +42,12 @@ class EventAleatoire
      */
     private $pollutionApparition;
 
+    /**
+     * @var bool
+     *
+     * @ORM\Column(name="actif", type="boolean")
+     */
+    private $actif = 0;
 
     /**
      * Get id
