@@ -67,13 +67,14 @@
                         <!--DEVELOPPEMENT MODALE-->
                         <div class="modal-dev">
                             <a class="close-modal-dev" href="#">X</a>
-                            <div class="row">
+                            <div class="row dvpt">
                                 {% for typeDeveloppement in typeDeveloppements %}
                                 <div class="col-4"><h1>{{ typeDeveloppement.type }}</h1>
                                     {% for developpement in typeDeveloppement.developpements %}
                                         <a href="{{ path('achat_developpement', {'id':developpement.id}) }}">
-                                            <button>{{ developpement.nom }}</button>
+                                            <button class="show-modal-dev open-modal">{{ developpement.nom }}</button>
                                         </a>
+                                        <p class="description">{{ developpement.description }}</p>
                                     {% endfor %}
                                 </div>
                                 {% endfor %}
