@@ -14,7 +14,7 @@ use Symfony\Component\HttpFoundation\Request;
 class ExpansionController extends Controller
 {
     /**
-     * @Route("/end_of_turn", name="end_of_turn")
+     * @Route("/expansion", name="expansion")
      */
     public function ExpansionAction(Request $request)
     {
@@ -35,6 +35,6 @@ class ExpansionController extends Controller
         }
 
 
-        return $this->redirectToRoute('page_jeu');
+        return $this->redirectToRoute('game');
     }
 }

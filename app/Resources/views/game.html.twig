@@ -87,18 +87,30 @@
                         <div class="modal-exp">
                             <a class="close-modal-exp" href="#">X</a>
                             <div class="row">
-                                <div class="col-4"><h1>twig expansion</h1>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Incidunt
-                                    sit quas aut labore nam quis qui eos quasi soluta sunt nihil voluptate expedita.
-                                    Aliquam aliquid excepturi ex ab fuga ipsa?
+                                <div class="col-6"><h1>Mes Usines</h1>
+                                    {% for departement in departements %}
+                                    {% if departement.usine == 1 %}
+                                    <ul style="list-style-type: none">
+                                        <li>{{ departement.nom }}</li>
+                                    </ul>
+                                    {% endif %}
+                                {% endfor %}
                                 </div>
-                                <div class="col-4"><h1>twig expansion</h1>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Incidunt
-                                    sit quas aut labore nam quis qui eos quasi soluta sunt nihil voluptate expedita.
-                                    Aliquam aliquid excepturi ex ab fuga ipsa?
+                                <div class="col-6"><h1>Départements diponibles</h1>
+
+                                    {% for departement in departements %}
+                                    {% if departement.usine == 0 %}
+                                            <ul style="list-style-type: none">
+                                                <li>{{ departement.nom }}</li>
+                                            </ul>
+                                    {% endif %}
+                                {% endfor %}
                                 </div>
-                                <div class="col-4"><h1>twig expansion</h1>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Incidunt
-                                    sit quas aut labore nam quis qui eos quasi soluta sunt nihil voluptate expedita.
-                                    Aliquam aliquid excepturi ex ab fuga ipsa?
-                                </div>
+                                <a href="{{ path('expansion') }}">
+                                    <button>Expansion</button>
+                                </a>
+
+
                             </div>
                         </div>
 
