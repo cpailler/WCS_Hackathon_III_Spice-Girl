@@ -68,11 +68,11 @@
                             <p class="text-secondary user-area">{{ banque.money }} K€</p><br/>
                             <img class="mini_icon" src="{{ asset('build/images/cheminee_ga.0ab032e6.png') }}">
                             <p class="text-secondary user-area">Niveau de Pollution global
-                                : {{ niveauPollution.niveauGlobal }}</p>
+                                : {{ niveauPollution.niveauGlobal|round }}%</p>
                             <img class="mini_icon" src="{{ asset('build/images/dollar.276bfed5.png') }}">
                             <p class="text-secondary user-area">Niveau d'inflation : {{ facteurInflation.facteur |round }}</p>
                             <img class="mini_icon" src="{{ asset('build/images/dollar.276bfed5.png') }}">
-                            <p class="text-secondary user-area">Revenus par tour : {{ facteurGain.facteur |round}} K€</p>
+                            <p class="text-secondary user-area">Revenus max par tour : {{ (300*nbUsines*facteurGain.facteur) | round }} K€</p>
                         </div>
                     </div>
 
