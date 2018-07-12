@@ -73,12 +73,13 @@
                             <a class="close-modal-dev" href="#">X</a>
                             <div class="row dvpt">
                                 {% for typeDeveloppement in typeDeveloppements %}
-                                <div class="col-4"><h1>{{ typeDeveloppement.type }}</h1>
+                                <div class="col-4"><h2>{{ typeDeveloppement.type }}</h2>
                                     {% for developpement in typeDeveloppement.developpements %}
                                         <a href="{{ path('achat_developpement', {'id':developpement.id}) }}">
                                             <button class="show-modal-dev open-modal">{{ developpement.nom }}</button>
                                         </a>
-                                        <p class="description">{{ developpement.description }}<strong id="prix"> {{ developpement.prix * facteurInflation.facteur |round}}K€</strong></p>
+                                        <p class="description">{{ developpement.description }}</p>
+                                        <p><img src="build/image/"><strong id="prix">{{ developpement.prix * facteurInflation.facteur |round}}K€</strong></p>
 
                                     {% endfor %}
                                 </div>
