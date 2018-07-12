@@ -36,7 +36,7 @@ class GameController extends Controller
         $niveauPollution = $em->getRepository(NiveauPollutionGlobal::class)->findAll()[0];
         $typeDeveloppement = $em->getRepository(TypeDeveloppement::class)->findAll();
         $infobulles = $em->getRepository(Infobulle::class)->FindAll();
-
+        $nbUsines = count($em->getRepository(Departement::class)->findBy(array('usine'=>true)));
         foreach ($departements as $departement){
             switch ($departement->getNiveauPollution()){
                 case $departement->getNiveauPollution()<10 :
@@ -87,7 +87,8 @@ class GameController extends Controller
             'typeDeveloppements' => $typeDeveloppement,
             'infobulle' => $infobulles[array_rand($infobulles)],
             'typeDeveloppements' => $typeDeveloppement,
-            'couleur' => $couleur
+            'couleur' => $couleur,
+            'nbUsines' => $nbUsines
         ));
     }
 }
