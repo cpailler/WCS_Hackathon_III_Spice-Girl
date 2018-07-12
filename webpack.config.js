@@ -3,6 +3,8 @@ var Encore = require('@symfony/webpack-encore');
 Encore
     .setOutputPath('web/build/')
     .setPublicPath('/web')
+    .setManifestKeyPrefix('build/')
+
     .addEntry('app', './assets/js/app.js')
     .addEntry('style', './assets/scss/main.scss')
 
@@ -20,6 +22,8 @@ Encore
     .addEntry('images/usine_ga', './assets/images/usine_ga.png')
     .addEntry('images/voiture_ga', './assets/images/voiture_ga.png')
 
+    .addEntry('homepage', './assets/scss/homepage.scss')
+    .addEntry('homepageJS', './assets/js/homepageJS.js')
     .cleanupOutputBeforeBuild()
     .enableBuildNotifications()
     .enableSassLoader()
