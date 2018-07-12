@@ -36,7 +36,7 @@ class InitialisationController extends Controller
 
         foreach ($departements as $departement) {
             $departement->setUsine(0);
-            $niveauxPollution[] = $departement->setNiveauPollution(rand(0,5))->getNiveauPollution();
+            $niveauxPollution[] = $departement->setNiveauPollution(rand(0.1,5))->getNiveauPollution();
             $em->persist($departement);
             $em->persist($departement[floor(rand(0,10))]->setUsine(1));
         }

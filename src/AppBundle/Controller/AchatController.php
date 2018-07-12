@@ -43,6 +43,6 @@ class AchatController extends Controller
 
 
         }
-        return $this->redirectToRoute('game');
+        return $this->redirectToRoute('game ');
     }
 }
