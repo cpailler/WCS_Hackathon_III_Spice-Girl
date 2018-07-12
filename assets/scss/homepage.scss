@@ -57,7 +57,7 @@ body.loaded {
   display: inline-block;
   position: relative;
   top: -160px;
-  left: 20px;
+  left: 25px;
 }
 
 .logo {
@@ -458,7 +458,7 @@ body.loaded {
 }
 
 .default-state {
-  border: 1px solid #fdad59;
+  border: 1px solid #721212;
   -webkit-transform: translateZ(calc((var(--cube-height)/2)));
   -moz-transform: translateZ(calc((var(--cube-height)/2)));
   -o-transform: translateZ(calc((var(--cube-height)/2)));
@@ -494,12 +494,12 @@ body.loaded {
   text-transform: uppercase;
   font-family: 'Lato', sans-serif;
   font-weight: 300;
-  color: #be9d7d;
+  color: #721212;
   line-height: var(--cube-height);
 }
 
 .active-state {
-  background: #fdad59;
+  background: #721212;
   color: white;
 }
 
