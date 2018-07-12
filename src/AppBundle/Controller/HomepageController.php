@@ -13,10 +13,10 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
  */
 class HomepageController extends Controller
 {
-    /*
-     * @Route("/test", name="homepage")
+    /**
+     * @Route("/", name="homepage")
      */
-    public function homepage(request $request){
+    public function homepage(){
         return $this->render('homepage/homepage.html.twig');
     }
 }
