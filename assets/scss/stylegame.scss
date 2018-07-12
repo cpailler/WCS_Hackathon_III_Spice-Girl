@@ -680,7 +680,7 @@ nav.side-open.open span, h5, h5 + p {
   border: none;
   color: #fff;
   outline: none;
-  padding: 20px 40px;
+  padding: 20px 20px;
   width: 24vw;
 }
 
@@ -689,21 +689,21 @@ nav.side-open.open span, h5, h5 + p {
 }
 
 .modal-cheat, .modal-dev, .modal-exp {
-  top: 10%;
-  left: 10%;
-  background-color: #120e0e;
-  color: white;
+  top: 5%;
+  left: 5%;
+  background-color: white;
+  color: black;
   display: none;
   position: fixed;
-  width: 80%;
-  height: 80%;
+  width: 90%;
+  height: 90%;
   padding: 50px;
   z-index: 10;
   box-shadow: 0 0 0 99999px rgba(0, 0, 0, 0.7);
 }
 
 .close-modal-cheat, .close-modal-dev, .close-modal-exp {
-  color: white;
+  color: black;
   text-decoration: none;
   float: right;
   position: absolute;
