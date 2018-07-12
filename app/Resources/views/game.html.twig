@@ -115,19 +115,26 @@
                         </div>
                     </div>
 
-                    <!--EXPANSION BOUTON-->
-                    <button class="show-modal-exp open-modal">Expansion</button>
-                    <!--EXPANSION MODALE-->
-                    <div class="modal-exp">
-                        <a class="close-modal-exp" href="#">X</a>
-                        <div class="row">
-                            <div class="col-5"><h1>Mes Usines</h1>
-                                {% for departement in departements %}
-                                    {% if departement.usine == 1 %}
-                                        <ul style="list-style-type: none">
-                                            <li id="dptNom">{{ departement.nom }}</li>
-                                        </ul>
-                                    {% endif %}
+                    <div class="side-navbar-wrapper main-container-side text-center">
+                        <!--DEVELOPPEMENT BOUTON-->
+                        <button class="show-modal-dev open-modal">Développement</button>
+                        <!--DEVELOPPEMENT MODALE-->
+                        <div class="modal-dev">
+                            <a class="close-modal-dev" href="#">X</a>
+                            <div class="row dvpt">
+                                {% for typeDeveloppement in typeDeveloppements %}
+                                    <div class="col-4"><h2>{{ typeDeveloppement.type }}</h2>
+                                        {% for developpement in typeDeveloppement.developpements %}
+                                            <a href="{{ path('achat_developpement', {'id':developpement.id}) }}">
+                                                <button class="show-modal-dev open-modal sousType">{{ developpement.nom }}</button>
+                                            </a>
+                                            <p class="description">{{ developpement.description }}<br></p>
+                                            <p><img class="mini_icon"
+                                                    src="{{ asset('build/images/piggy_bank.a0482efe.png') }}">
+                                                <strong id="prix">{{ (developpement.prix * facteurInflation.facteur |round)|number_format(0, ' ', ',') }}
+                                                    K€</strong></p>
+                                        {% endfor %}
+                                    </div>
                                 {% endfor %}
                             </div>
                             <div class="col-1">
@@ -141,14 +148,31 @@
                             </div>
                             <div class="col-5"><h1>Départements diponibles</h1>
 
-                                {% for departement in departements %}
-                                    {% if departement.usine == 0 %}
-                                        <ul style="list-style-type: none">
-                                            <li>{{ departement.nom }}</li>
-                                        </ul>
-                                    {% endif %}
-                                {% endfor %}
-                            </div>
+                        <!--EXPANSION BOUTON-->
+                        <button class="show-modal-exp open-modal">Expansion</button>
+                        <!--EXPANSION MODALE-->
+                        <div class="modal-exp">
+                            <a class="close-modal-exp" href="#">X</a>
+                            <div class="row">
+                                <div class="col-5"><h1>Mes Usines</h1>
+                                    {% for departement in departements %}
+                                        {% if departement.usine == 1 %}
+                                            <ul style="list-style-type: none">
+                                                <li id="dptNom">{{ departement.nom }}</li>
+                                            </ul>
+                                        {% endif %}
+                                    {% endfor %}
+                                </div>
+                                <div class="col-1">
+                                    <a href="{{ path('expansion') }}">
+                                        <button type="button" class="btn exp">Expansion</button>
+                                    </a>
+                                    <p><img class="mini_icon"
+                                            src="{{ asset('build/images/piggy_bank.a0482efe.png') }}">
+                                        <strong id="prix">{{ (500 * facteurInflation.facteur |round)|number_format(0, ' ', ',') }}
+                                            K€</strong></p>
+                                </div>
+                                <div class="col-5"><h1>Départements diponibles</h1>
 
 
                         </div>
@@ -169,6 +193,10 @@
                                         </a>
                                         <p class="description">{{ atouts.description }}</p>
                                     </div>
+                                    <p><img class="mini_icon"
+                                            src="{{ asset('build/images/piggy_bank.a0482efe.png') }}">
+                                        <strong id="prix">{{ (atouts.prix * facteurInflation.facteur |round)|number_format(0, ' ', ',') }}
+                                            K€</strong></p>
                                 {% endfor %}
                             </div>
                         </div>
