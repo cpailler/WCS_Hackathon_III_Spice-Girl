@@ -35,9 +35,45 @@ class GameController extends Controller
         $eventAleatoire = $em->getRepository(EventAleatoire::class)->findAll();
         $niveauPollution = $em->getRepository(NiveauPollutionGlobal::class)->findAll()[0];
         $typeDeveloppement = $em->getRepository(TypeDeveloppement::class)->findAll();
-
         $infobulles = $em->getRepository(Infobulle::class)->FindAll();
 
+        foreach ($departements as $departement){
+            switch ($departement->getNiveauPollution()){
+                case $departement->getNiveauPollution()<10 :
+                    dump($departement->getNiveauPollution());
+                    $couleur[$departement->getNomCamelCase()] = "#3db48e";
+                    break;
+                case $departement->getNiveauPollution()<20 :
+                    $couleur[$departement->getNomCamelCase()] = "#5dca5f";
+                    break;
+                case $departement->getNiveauPollution()<30 :
+                    $couleur[$departement->getNomCamelCase()] = "#99e600";
+                    break;
+                case $departement->getNiveauPollution()<40 :
+                    $couleur[$departement->getNomCamelCase()] = "#c3f001";
+                    break;
+                case $departement->getNiveauPollution()<50 :
+                    $couleur[$departement->getNomCamelCase()] = "#ff0";
+                    break;
+                case $departement->getNiveauPollution()<60 :
+                    $couleur[$departement->getNomCamelCase()] = "#fed201";
+                    break;
+                case $departement->getNiveauPollution()<70 :
+                    $couleur[$departement->getNomCamelCase()] = "#ffaa01";
+                    break;
+                case $departement->getNiveauPollution()<80 :
+                    $couleur[$departement->getNomCamelCase()] = "#fe5e00";
+                    break;
+                case $departement->getNiveauPollution()<90 :
+                    $couleur[$departement->getNomCamelCase()] = "#fe0000";
+                    break;
+                default :
+                    dump($departement);
+                    $couleur[$departement->getNomCamelCase()] = "maroon";
+                    break;
+
+            }
+        }
 
         // replace this example code with whatever you need
         return $this->render('game.html.twig', array(
@@ -51,7 +87,9 @@ class GameController extends Controller
             'eventAleatoire' => $eventAleatoire,
             'niveauPollution' => $niveauPollution,
             'typeDeveloppements' => $typeDeveloppement,
-            'infobulle' => $infobulles[array_rand($infobulles)]
+            'infobulle' => $infobulles[array_rand($infobulles)],
+            'typeDeveloppements' => $typeDeveloppement,
+            'couleur' => $couleur
         ));
     }
 }

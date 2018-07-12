@@ -13,16 +13,16 @@ html, body {
 
 // COULEUR NIVEAU DE GALERE
 
-$niv1: #3db48e;
-$niv2: #5dca5f;
-$niv3: #99e600;
-$niv4: c3f001;
-$niv5: #ff0;
-$niv6: #fed201;
-$niv7: #ffaa01;
-$niv8: #fe5e00;
-$niv9: #fe0000;
-$niv10: maroon;
+$niv1:#3db48e;
+$niv2:#5dca5f;
+$niv3:#99e600;
+$niv4:#c3f001;
+$niv5:#ff0;
+$niv6:#fed201;
+$niv7:#ffaa01;
+$niv8:#fe5e00;
+$niv9:#fe0000;
+$niv10:maroon;
 
 // BAR DE PROGRESSION DE LA GALERE
 
@@ -709,6 +709,21 @@ nav.side-open.open span, h5, h5 + p {
   position: absolute;
   top: 10px;
   right: 20px
+}
+
+/* Developpement */
+
+.description{
+  font-size: 0.75em;
+  text-align: justify;
+}
+
+.dvpt{
+  margin-top: -3vw;
+}
+
+#prix{
+  color: #3db48e;
 }
 
 

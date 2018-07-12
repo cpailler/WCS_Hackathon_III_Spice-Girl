@@ -24,12 +24,13 @@ class EndOfTurnController extends Controller
         $departements = $em->getRepository(Departement::class)->findAll();
         $facteurPollutionGlobal = $em->getRepository(FacteurPollutionGlobal::class)->findAll()[0];
         $facteurGainTotal = $em->getRepository(FacteurGainTotal::class)->findAll()[0];
-        $nbBarAOxygene = $em->getRepository(Atout::class)->findOneBy(array('id'=>2))->getQuantite();
+        $nbBarAOxygene = $em->getRepository(Atout::class)->findOneBy(array('id'=>2));
         $banque = $em->getRepository(Banque::class)->findAll()[0];
         $niveauPollutionGlobal = $em->getRepository(NiveauPollutionGlobal::class)->findAll()[0];
         $pollutionTotale = 0;
         $gainMax = 0;
         $gainDuTour = 0;
+        $rapportTruque = $em->getRepository(Atout::class)->findOneBy(array('id'=>1));
         foreach ($departements as $departement){
             if ($departement->getUsine()==1){
                 $departement->setNiveauPollution(min(100, $departement->getNiveauPollution()
@@ -46,7 +47,12 @@ class EndOfTurnController extends Controller
             $pollutionTotale += $departement->getNiveauPollution();
             $em->persist($departement);
         }
-        $gainDuTour*=floor(1-(0.1+0.3*$facteurPollutionGlobal->getFacteur()));
+        if ($rapportTruque->getQuantite() != 1){
+            $gainDuTour*=floor(1-(0.1+0.3*$facteurPollutionGlobal->getFacteur()));
+        }else{
+            $rapportTruque->setQuantite(0);
+            $em->persist($rapportTruque);
+        }
 
         $banque->setMoney($gainDuTour);
 
@@ -85,7 +91,7 @@ class EndOfTurnController extends Controller
                 }
             }
 
-            return $this->redirectToRoute('page_jeu');
+            return $this->redirectToRoute('game');
 
         }
     }
