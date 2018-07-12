@@ -36,28 +36,28 @@ body.loaded {
 }
 
 .svg-wrapper {
-  height: 150px;
+  height: 200px;
   margin: 0 auto;
   position: relative;
   top: 50%;
   transform: translateY(-50%);
-  width: 150px;
+  width: 200px;
 }
 
 .animate {
   fill: transparent;
   stroke-dasharray: 300;
   stroke-dashoffset: 600;
-  stroke-width: 1px;
-  stroke: #fdad59;
+  stroke-width: 2px;
+  stroke: #721212;
 }
 
 .text {
   color: #fff;
   display: inline-block;
   position: relative;
-  top: -160px;
-  left: 25px;
+  top: -180px;
+  left: 30px;
 }
 
 .logo {
@@ -77,6 +77,15 @@ body.loaded {
   letter-spacing: 3px;
 }
 
+.image-profil {
+  -webkit-transition: width 0.5s, height 0.5s, background-color 0.5s, -webkit-transform 0.5s;
+  transition: width 0.5s, height 0.5s, background-color 0.5s, transform 0.5s;
+}
+
+.image-profil:hover{
+  -webkit-transform: scale(1.05);
+  transform: scale(1.05);
+}
 
 /*Desktop navigation*/
 
@@ -346,7 +355,7 @@ body.loaded {
   width: 100%;
   height: 100%;
   transform: scale(1.25);
-  background-image: linear-gradient(rgba(21, 22, 29, .9), rgba(21, 22, 29, .9)), url(http://harvardmagazine.com/sites/default/files/img/article/0215/img_HS_MA15_p08_02.jpg);
+  background-image: linear-gradient(rgba(21, 22, 29, .9), rgba(21, 22, 29, .9)), url('images/2010.jpg');
   background-position: center center;
   background-repeat: no-repeat;
   background-attachment: fixed;

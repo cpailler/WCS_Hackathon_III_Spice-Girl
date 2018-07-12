@@ -6,15 +6,15 @@ window.onbeforeunload = function() {
 jQuery(document).ready(function($) {
 
     $(window).load(function() {
-        $('.loading').delay(20000).fadeOut('slow', function() {
+        $('.loading').delay(2000).fadeOut('slow', function() {
             $(this).remove();
         });
         setTimeout(function() {
             $('.landing').addClass('loaded');
-        }, 20000);
+        }, 2000);
         setTimeout(function() {
             $('body').addClass('loaded');
-        }, 20000);
+        }, 2000);
 
     });
 
