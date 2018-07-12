@@ -31,6 +31,7 @@ class ExpansionController extends Controller
         else{
             $em->persist($banque->setMoney($banque->getMoney()-ceil(500*$facteurInflation->getFacteur())));
             $em->persist($departements[floor(rand(0,count($departements)-1))]->setUsine(1));
+            $em->persist($facteurInflation->setFacteur($facteurInflation->getFacteur()*3));
             $em->flush();
         }
 
