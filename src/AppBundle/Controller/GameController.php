@@ -2,6 +2,7 @@
 
 namespace AppBundle\Controller;
 
+use AppBundle\Entity\Infobulle;
 use AppBundle\Entity\Atout;
 use AppBundle\Entity\Banque;
 use AppBundle\Entity\Departement;
@@ -35,6 +36,8 @@ class GameController extends Controller
         $niveauPollution = $em->getRepository(NiveauPollutionGlobal::class)->findAll()[0];
         $typeDeveloppement = $em->getRepository(TypeDeveloppement::class)->findAll();
 
+        $infobulles = $em->getRepository(Infobulle::class)->FindAll();
+
 
         // replace this example code with whatever you need
         return $this->render('game.html.twig', array(
@@ -47,7 +50,8 @@ class GameController extends Controller
             'developpements' => $developpements,
             'eventAleatoire' => $eventAleatoire,
             'niveauPollution' => $niveauPollution,
-            'typeDeveloppements' => $typeDeveloppement
+            'typeDeveloppements' => $typeDeveloppement,
+            'infobulle' => $infobulles[array_rand($infobulles)]
         ));
     }
 }
