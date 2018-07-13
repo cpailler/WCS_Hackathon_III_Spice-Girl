@@ -168,10 +168,12 @@
                                 {% for atout in atouts %}
                                     {% if (atout.id == 1 and atout.quantite == 0) or (atout.id == 2 and atout.quantite <10)  %}
                                     <div class="col-6">
+                                        <br><br>
                                         <a href="{{ path('achat_atout', {'id':atout.id}) }}">
                                             <button class="show-modal-dev open-modal ">{{ atout.nom }}</button>
                                         </a>
-                                        <p class="description">{{ atout.description }}</p>
+                                        <br><br>
+                                        <p class="description Magouille">{{ atout.description }}</p>
 
                                     <p><img class="mini_icon"
                                             src="{{ asset('build/images/piggy_bank.a0482efe.png') }}">
