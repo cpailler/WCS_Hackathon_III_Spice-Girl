@@ -26,7 +26,7 @@
                             <div class="back"></div>
                             <div class="back_b"></div>
                         </div>
-                        Revenus par tour : {{ (300*nbUsines*facteurGain.facteur) | round }} K€
+                        Revenus par tour : {{ ((300*nbUsines*facteurGain.facteur) | round)|number_format(0, ' ', ',') }} K€
 
                     </li>
                 </ul>
@@ -151,7 +151,7 @@
                                 <br><br>
                                 <p><img class="mini_icon"
                                         src="{{ asset('build/images/piggy_bank.a0482efe.png') }}">
-                                    <strong id="prix">{{ (500 * facteurInflation.facteur) |round }}
+                                    <strong id="prix">{{ ((500 * facteurInflation.facteur) |round)|number_format(0, ' ', ',') }}
                                         K€</strong></p>
                             </div>
                             <div class="col-5"><h1>Départements diponibles</h1>
