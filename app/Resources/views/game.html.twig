@@ -105,11 +105,12 @@
                     </div>
 
                     <!-- ICI Clément -->
+                    {% if eventAleatoire|length > 0 %}
                     <div class="text-center">
                         <img style="width:3.2vw;" src="{{ asset('build/images/warn_ga.e720a161.png') }}">
-                        <p style="color:white; font-size: 13px;">TEXTE</p>
+                        <p style="color:white; font-size: 13px;">{{ eventAleatoire.0.nom }}</p>
                     </div>
-
+                    {% endif %}
                     <div class="side-navbar-wrapper main-container-side text-center">
                         <!--DEVELOPPEMENT BOUTON-->
                         <button class="show-modal-dev open-modal">Développement</button>

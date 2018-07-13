@@ -33,7 +33,7 @@ class GameController extends Controller
         $atout = $em->getRepository(Atout::class)->findAll();
         $departements = $em->getRepository(Departement::class)->findAll();
         $developpements = $em->getRepository(Developpement::class)->findAll();
-        $eventAleatoire = $em->getRepository(EventAleatoire::class)->findAll();
+        $eventAleatoire = $em->getRepository(EventAleatoire::class)->findBy(array('actif'=>1));
         $niveauPollution = $em->getRepository(NiveauPollutionGlobal::class)->findAll()[0];
         $typeDeveloppement = $em->getRepository(TypeDeveloppement::class)->findAll();
         $infobulles = $em->getRepository(Infobulle::class)->FindAll();
