@@ -84,9 +84,9 @@
                     <div class="side-navbar-wrapper">
                         <div class="sidenav-header-inner text-center justify-content-center py-5">
                             <img class="avatar"
-                                 src="http://res.cloudinary.com/tiffanym/image/upload/q_100/v1531386850/femme_ga_gajqip.png"
+                                 src="{{ asset('images/'~personnage.image) }}"
                                  alt="user" class="rounded-circle"/>
-                            <h5 class="text-light user-name">Personnage</h5>
+                            <h5 class="text-light user-name">{{ personnage.nom }}</h5>
                             <p class="text-secondary user-area">{{ banque.money |number_format(0, ' ', ',')}} K€</p><br/>
                         </div>
                     </div>
