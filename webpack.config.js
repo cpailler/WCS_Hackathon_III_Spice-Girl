@@ -12,6 +12,9 @@ Encore
     .addEntry('js/stylegame', './assets/js/stylegame.js')
     .addEntry('css/gameover', './assets/scss/gameover.scss')
 
+    .addEntry('css/quiz', './assets/scss/quiz.scss')
+
+
     // Transfert des images dans build/images.
     .addEntry('images/ampoule_ga', './assets/images/ampoule_ga.png')
     .addEntry('images/cheminee_ga', './assets/images/cheminee_ga.png')
