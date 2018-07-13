@@ -121,19 +121,18 @@
                     <div class="modal-exp">
                         <a class="close-modal-exp" href="#">X</a>
                         <div class="row">
-                            <div class="col-5"><h1>Mes Usines</h1>
+                            <div class="col-5" ><h1>Mes Usines</h1>
                                 {% for departement in departements %}
                                     {% if departement.usine == 1 %}
-                                        <ul style="list-style-type: none">
-                                            <li id="dptNom">{{ departement.nom }}</li>
-                                        </ul>
+                                            <p id="dptNom">{{ departement.nom }}</p>
                                     {% endif %}
                                 {% endfor %}
                             </div>
-                            <div class="col-1">
+                            <div class="col-2">
                                 <a href="{{ path('expansion') }}">
                                     <button type="button" class="btn exp">Expansion</button>
                                 </a>
+                                <br><br>
                                 <p><img class="mini_icon"
                                         src="{{ asset('build/images/piggy_bank.a0482efe.png') }}">
                                     <strong id="prix">{{ 500 * facteurInflation.facteur |round }}
@@ -143,9 +142,7 @@
 
                                 {% for departement in departements %}
                                     {% if departement.usine == 0 %}
-                                        <ul style="list-style-type: none">
-                                            <li>{{ departement.nom }}</li>
-                                        </ul>
+                                            <p>{{ departement.nom }}</p>
                                     {% endif %}
                                 {% endfor %}
                             </div>
