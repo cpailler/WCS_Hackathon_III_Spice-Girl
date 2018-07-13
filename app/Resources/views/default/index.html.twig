@@ -1,76 +1,916 @@
 {% extends 'base.html.twig' %}
 
-{% block body %}
-    <div id="wrapper">
-        <div id="container">
-            <div id="welcome">
-                <h1><span>Welcome to</span> Symfony {{ constant('Symfony\\Component\\HttpKernel\\Kernel::VERSION') }}</h1>
-            </div>
-
-            <div id="status">
-                <p>
-                    <svg id="icon-status" width="1792" height="1792" viewBox="0 0 1792 1792" xmlns="http://www.w3.org/2000/svg"><path d="M1671 566q0 40-28 68l-724 724-136 136q-28 28-68 28t-68-28l-136-136-362-362q-28-28-28-68t28-68l136-136q28-28 68-28t68 28l294 295 656-657q28-28 68-28t68 28l136 136q28 28 28 68z" fill="#759E1A"/></svg>
-
-                    Your application is now ready. You can start working on it at:
-                    <code>{{ base_dir }}</code>
-                </p>
-            </div>
-
-            <div id="next">
-                <h2>What's next?</h2>
-                <p>
-                    <svg id="icon-book" version="1.1" xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" viewBox="-12.5 9 64 64" enable-background="new -12.5 9 64 64" xml:space="preserve">
-                        <path fill="#AAA" d="M6.8,40.8c2.4,0.8,4.5-0.7,4.9-2.5c0.2-1.2-0.3-2.1-1.3-3.2l-0.8-0.8c-0.4-0.5-0.6-1.3-0.2-1.9
-                            c0.4-0.5,0.9-0.8,1.8-0.5c1.3,0.4,1.9,1.3,2.9,2.2c-0.4,1.4-0.7,2.9-0.9,4.2l-0.2,1c-0.7,4-1.3,6.2-2.7,7.5
-                            c-0.3,0.3-0.7,0.5-1.3,0.6c-0.3,0-0.4-0.3-0.4-0.3c0-0.3,0.2-0.3,0.3-0.4c0.2-0.1,0.5-0.3,0.4-0.8c0-0.7-0.6-1.3-1.3-1.3
-                            c-0.6,0-1.4,0.6-1.4,1.7s1,1.9,2.4,1.8c0.8,0,2.5-0.3,4.2-2.5c2-2.5,2.5-5.4,2.9-7.4l0.5-2.8c0.3,0,0.5,0.1,0.8,0.1
-                            c2.4,0.1,3.7-1.3,3.7-2.3c0-0.6-0.3-1.2-0.9-1.2c-0.4,0-0.8,0.3-1,0.8c-0.1,0.6,0.8,1.1,0.1,1.5c-0.5,0.3-1.4,0.6-2.7,0.4l0.3-1.3
-                            c0.5-2.6,1-5.7,3.2-5.8c0.2,0,0.8,0,0.8,0.4c0,0.2,0,0.2-0.2,0.5c-0.2,0.3-0.3,0.4-0.2,0.7c0,0.7,0.5,1.1,1.2,1.1
-                            c0.9,0,1.2-1,1.2-1.4c0-1.2-1.2-1.8-2.6-1.8c-1.5,0.1-2.8,0.9-3.7,2.1c-1.1,1.3-1.8,2.9-2.3,4.5c-0.9-0.8-1.6-1.8-3.1-2.3
-                            c-1.1-0.7-2.3-0.5-3.4,0.3c-0.5,0.4-0.8,1-1,1.6c-0.4,1.5,0.4,2.9,0.8,3.4l0.9,1c0.2,0.2,0.6,0.8,0.4,1.5c-0.3,0.8-1.2,1.3-2.1,1
-                            c-0.4-0.2-1-0.5-0.9-0.9c0.1-0.2,0.2-0.3,0.3-0.5s0.1-0.3,0.1-0.3c0.2-0.6-0.1-1.4-0.7-1.6c-0.6-0.2-1.2,0-1.3,0.8
-                            C4.3,38.4,4.7,40,6.8,40.8z M46.1,20.9c0-4.2-3.2-7.5-7.1-7.5h-3.8C34.8,10.8,32.7,9,30.2,9L-2.3,9.1c-2.8,0.1-4.9,2.4-4.9,5.4
-                            L-7,58.6c0,4.8,8.1,13.9,11.6,14.1l34.7-0.1c3.9,0,7-3.4,7-7.6L46.1,20.9z M-0.3,36.4c0-8.6,6.5-15.6,14.5-15.6
-                            c8,0,14.5,7,14.5,15.6S22.1,52,14.2,52C6.1,52-0.3,45-0.3,36.4z M42.1,65.1c0,1.8-1.5,3.1-3.1,3.1H4.6c-0.7,0-3-1.8-4.5-4.4h30.4
-                            c2.8,0,5-2.4,5-5.4V17.9h3.7c1.6,0,2.9,1.4,2.9,3.1V65.1L42.1,65.1z"/>
-                    </svg>
-
-                    Read the documentation to learn
-                    <a href="https://symfony.com/doc/{{ constant('Symfony\\Component\\HttpKernel\\Kernel::VERSION')[:3] }}/page_creation.html">
-                        How to create your first page in Symfony
-                    </a>
-                </p>
-            </div>
-
-        </div>
-    </div>
-{% endblock %}
-
 {% block stylesheets %}
-<style>
-    body { background: #F5F5F5; font: 18px/1.5 sans-serif; }
-    h1, h2 { line-height: 1.2; margin: 0 0 .5em; }
-    h1 { font-size: 36px; }
-    h2 { font-size: 21px; margin-bottom: 1em; }
-    p { margin: 0 0 1em 0; }
-    a { color: #0000F0; }
-    a:hover { text-decoration: none; }
-    code { background: #F5F5F5; max-width: 100px; padding: 2px 6px; word-wrap: break-word; }
-    #wrapper { background: #FFF; margin: 1em auto; max-width: 800px; width: 95%; }
-    #container { padding: 2em; }
-    #welcome, #status { margin-bottom: 2em; }
-    #welcome h1 span { display: block; font-size: 75%; }
-    #icon-status, #icon-book { float: left; height: 64px; margin-right: 1em; margin-top: -4px; width: 64px; }
-    #icon-book { display: none; }
-
-    @media (min-width: 768px) {
-        #wrapper { width: 80%; margin: 2em auto; }
-        #icon-book { display: inline-block; }
-        #status a, #next a { display: block; }
-
-        @-webkit-keyframes fade-in { 0% { opacity: 0; } 100% { opacity: 1; } }
-        @keyframes fade-in { 0% { opacity: 0; } 100% { opacity: 1; } }
-        .sf-toolbar { opacity: 0; -webkit-animation: fade-in 1s .2s forwards; animation: fade-in 1s .2s forwards;}
-    }
-</style>
+    <link rel="stylesheet" href="{{ asset('build/css/quiz.css') }}">
+    <link rel="stylesheet" href="http://uh.edu/class/lac/learn/quiz/quiz-js/css/slickQuiz.css">
+    <link rel="stylesheet" href="http://uh.edu/class/lac/learn/quiz/quiz-js/css/reset.css">
+    <link rel="stylesheet" href="http://uh.edu/class/lac/learn/quiz/quiz-js/css/master.css">
 {% endblock %}
+{% block body %}
+
+
+<body id="slickQuiz">
+<div class="quizContent">
+    <h1 class="quizName">
+        <!-- where the quiz name goes -->
+    </h1>
+    <div class="quizArea">
+        <div class="quizHeader">
+            <!-- where the quiz main copy goes -->
+            <a class="button startQuiz" href="#">Get Started!</a>
+        </div>
+        <!-- where the quiz gets built -->
+    </div>
+    <div class="quizResults">
+        <h3 class="quizScore">You Scored:
+            <span>
+                                        <!-- where the quiz score goes -->
+                                    </span>
+        </h3>
+        <!--class="quizLevel" commentted out-->
+        <h3 class="">
+            <br><br><br><h4 style="text-align: center">Vous voulez en savoir plus ? Rdv le 19 septembre 2018, pour la 4e journée nationale de la qualité de l'air</h4>
+            <img src="/images/18116_JNQA2018_vignette-3_TW_858x480_DEF.jpg" alt="" style="margin-left: 20%"><br><br>
+            <div>
+                <a href="{{ path('homepage') }}" style="text-decoration:none">
+                    <div class="container"></div>
+                    <div class="cube">
+                        <div class="default-state">
+                            <span>try again</span>
+                        </div>
+                        <div class="active-state">
+                            <span>accueil</span>
+                        </div>
+                    </div>
+                </a>
+            </div>
+
+                                    <span>
+                                        <!-- where the quiz ranking level goes -->
+                                    </span>
+        </h3>
+        <div class="quizResultsCopy">
+            <!-- where the quiz result copy goes -->
+        </div>
+
+    </div>
+</div>
+
+{% block javascripts %}
+    <script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
+    <script src=""></script>
+    <script>
+        // Put all your page JS here
+
+        $(function () {
+            $('#slickQuiz').slickQuiz();
+        });
+
+        /*!
+         * SlickQuiz jQuery Plugin
+         * https://github.com/jewlofthelotus/SlickQuiz
+         *
+         * @updated October 25, 2014
+         * @version 1.5.20
+         *
+         * @author Julie Cameron - http://www.juliecameron.com
+         * @copyright (c) 2013 Quicken Loans - http://www.quickenloans.com
+         * @license MIT
+         */
+
+        (function($){
+            $.slickQuiz = function(element, options) {
+                var plugin   = this,
+                    $element = $(element),
+                    _element = '#' + $element.attr('id'),
+
+                    defaults = {
+                        checkAnswerText:  'Check My Answer!',
+                        nextQuestionText: 'Next &raquo;',
+                        backButtonText: '',
+                        completeQuizText: '',
+                        tryAgainText: '',
+                        questionCountText: 'Question %current of %total',
+                        preventUnansweredText: 'You must select at least one answer.',
+                        questionTemplateText:  '%count. %text',
+                        scoreTemplateText: '%score / %total',
+                        nameTemplateText:  '<span>Quiz: </span>%name',
+                        skipStartButton: false,
+                        numberOfQuestions: null,
+                        randomSortQuestions: false,
+                        randomSortAnswers: false,
+                        preventUnanswered: false,
+                        disableScore: false,
+                        disableRanking: false,
+                        scoreAsPercentage: false,
+                        perQuestionResponseMessaging: true,
+                        perQuestionResponseAnswers: false,
+                        completionResponseMessaging: false,
+                        displayQuestionCount: true,   // Deprecate?
+                        displayQuestionNumber: true,  // Deprecate?
+                        animationCallbacks: { // only for the methods that have jQuery animations offering callback
+                            setupQuiz: function () {},
+                            startQuiz: function () {},
+                            resetQuiz: function () {},
+                            checkAnswer: function () {},
+                            nextQuestion: function () {},
+                            backToQuestion: function () {},
+                            completeQuiz: function () {}
+                        },
+                        events: {
+                            onStartQuiz: function (options) {},
+                            onCompleteQuiz: function (options) {}  // reserved: options.questionCount, options.score
+                        }
+                    },
+
+                    // Class Name Strings (Used for building quiz and for selectors)
+                    questionCountClass     = 'questionCount',
+                    questionGroupClass     = 'questions',
+                    questionClass          = 'question',
+                    answersClass           = 'answers',
+                    responsesClass         = 'responses',
+                    completeClass          = 'complete',
+                    correctClass           = 'correctResponse',
+                    incorrectClass         = 'incorrectResponse',
+                    correctResponseClass   = 'correct',
+                    incorrectResponseClass = 'incorrect',
+                    checkAnswerClass       = 'checkAnswer',
+                    nextQuestionClass      = 'nextQuestion',
+                    lastQuestionClass      = 'lastQuestion',
+                    backToQuestionClass    = 'backToQuestion',
+                    tryAgainClass          = 'tryAgain',
+
+                    // Sub-Quiz / Sub-Question Class Selectors
+                    _questionCount         = '.' + questionCountClass,
+                    _questions             = '.' + questionGroupClass,
+                    _question              = '.' + questionClass,
+                    _answers               = '.' + answersClass,
+                    _answer                = '.' + answersClass + ' li',
+                    _responses             = '.' + responsesClass,
+                    _response              = '.' + responsesClass + ' li',
+                    _correct               = '.' + correctClass,
+                    _correctResponse       = '.' + correctResponseClass,
+                    _incorrectResponse     = '.' + incorrectResponseClass,
+                    _checkAnswerBtn        = '.' + checkAnswerClass,
+                    _nextQuestionBtn       = '.' + nextQuestionClass,
+                    _prevQuestionBtn       = '.' + backToQuestionClass,
+                    _tryAgainBtn           = '.' + tryAgainClass,
+
+                    // Top Level Quiz Element Class Selectors
+                    _quizStarter           = _element + ' .startQuiz',
+                    _quizName              = _element + ' .quizName',
+                    _quizArea              = _element + ' .quizArea',
+                    _quizResults           = _element + ' .quizResults',
+                    _quizResultsCopy       = _element + ' .quizResultsCopy',
+                    _quizHeader            = _element + ' .quizHeader',
+                    _quizScore             = _element + ' .quizScore',
+                    _quizLevel             = _element + ' .quizLevel',
+
+                    // Top Level Quiz Element Objects
+                    $quizStarter           = $(_quizStarter),
+                    $quizName              = $(_quizName),
+                    $quizArea              = $(_quizArea),
+                    $quizResults           = $(_quizResults),
+                    $quizResultsCopy       = $(_quizResultsCopy),
+                    $quizHeader            = $(_quizHeader),
+                    $quizScore             = $(_quizScore),
+                    $quizLevel             = $(_quizLevel)
+                ;
+
+
+                // Reassign user-submitted deprecated options
+                var depMsg = '';
+
+                if (options && typeof options.disableNext != 'undefined') {
+                    if (typeof options.preventUnanswered == 'undefined') {
+                        options.preventUnanswered = options.disableNext;
+                    }
+                    depMsg += 'The \'disableNext\' option has been deprecated, please use \'preventUnanswered\' in it\'s place.\n\n';
+                }
+
+                if (options && typeof options.disableResponseMessaging != 'undefined') {
+                    if (typeof options.preventUnanswered == 'undefined') {
+                        options.perQuestionResponseMessaging = options.disableResponseMessaging;
+                    }
+                    depMsg += 'The \'disableResponseMessaging\' option has been deprecated, please use' +
+                        ' \'perQuestionResponseMessaging\' and \'completionResponseMessaging\' in it\'s place.\n\n';
+                }
+
+                if (options && typeof options.randomSort != 'undefined') {
+                    if (typeof options.randomSortQuestions == 'undefined') {
+                        options.randomSortQuestions = options.randomSort;
+                    }
+                    if (typeof options.randomSortAnswers == 'undefined') {
+                        options.randomSortAnswers = options.randomSort;
+                    }
+                    depMsg += 'The \'randomSort\' option has been deprecated, please use' +
+                        ' \'randomSortQuestions\' and \'randomSortAnswers\' in it\'s place.\n\n';
+                }
+
+                if (depMsg !== '') {
+                    if (typeof console != 'undefined') {
+                        console.warn(depMsg);
+                    } else {
+                        alert(depMsg);
+                    }
+                }
+                // End of deprecation reassignment
+
+
+                plugin.config = $.extend(defaults, options);
+
+                // Set via json option or quizJSON variable (see slickQuiz-config.js)
+                var quizValues = (plugin.config.json ? plugin.config.json : typeof quizJSON != 'undefined' ? quizJSON : null);
+
+                // Get questions, possibly sorted randomly
+                var questions = plugin.config.randomSortQuestions ?
+                    quizValues.questions.sort(function() { return (Math.round(Math.random())-0.5); }) :
+                    quizValues.questions;
+
+                // Count the number of questions
+                var questionCount = questions.length;
+
+                // Select X number of questions to load if options is set
+                if (plugin.config.numberOfQuestions && questionCount >= plugin.config.numberOfQuestions) {
+                    questions = questions.slice(0, plugin.config.numberOfQuestions);
+                    questionCount = questions.length;
+                }
+
+                // some special private/internal methods
+                var internal = {method: {
+                        // get a key whose notches are "resolved jQ deferred" objects; one per notch on the key
+                        // think of the key as a house key with notches on it
+                        getKey: function (notches) { // returns [], notches >= 1
+                            var key = [];
+                            for (i=0; i<notches; i++) key[i] = $.Deferred ();
+                            return key;
+                        },
+
+                        // put the key in the door, if all the notches pass then you can turn the key and "go"
+                        turnKeyAndGo: function (key, go) { // key = [], go = function ()
+                            // when all the notches of the key are accepted (resolved) then the key turns and the engine (callback/go) starts
+                            $.when.apply (null, key). then (function () {
+                                go ();
+                            });
+                        },
+
+                        // get one jQ
+                        getKeyNotch: function (key, notch) { // notch >= 1, key = []
+                            // key has several notches, numbered as 1, 2, 3, ... (no zero notch)
+                            // we resolve and return the "jQ deferred" object at specified notch
+                            return function () {
+                                key[notch-1].resolve (); // it is ASSUMED that you initiated the key with enough notches
+                            };
+                        }
+                    }};
+
+                plugin.method = {
+                    // Sets up the questions and answers based on above array
+                    setupQuiz: function(options) { // use 'options' object to pass args
+                        var key, keyNotch, kN;
+                        key = internal.method.getKey (3); // how many notches == how many jQ animations you will run
+                        keyNotch = internal.method.getKeyNotch; // a function that returns a jQ animation callback function
+                        kN = keyNotch; // you specify the notch, you get a callback function for your animation
+
+                        $quizName.hide().html(plugin.config.nameTemplateText
+                            .replace('%name', quizValues.info.name) ).fadeIn(1000, kN(key,1));
+                        $quizHeader.hide().prepend($('<div class="quizDescription">' + quizValues.info.main + '</div>')).fadeIn(1000, kN(key,2));
+                        $quizResultsCopy.append(quizValues.info.results);
+
+                        // add retry button to results view, if enabled
+                        if (plugin.config.tryAgainText && plugin.config.tryAgainText !== '') {
+                            $quizResultsCopy.append('<p><a class="button ' + tryAgainClass + '" href="#">' + plugin.config.tryAgainText + '</a></p>');
+                        }
+
+                        // Setup questions
+                        var quiz  = $('<ol class="' + questionGroupClass + '"></ol>'),
+                            count = 1;
+
+                        // Loop through questions object
+                        for (i in questions) {
+                            if (questions.hasOwnProperty(i)) {
+                                var question = questions[i];
+
+                                var questionHTML = $('<li class="' + questionClass +'" id="question' + (count - 1) + '"></li>');
+
+                                if (plugin.config.displayQuestionCount) {
+                                    questionHTML.append('<div class="' + questionCountClass + '">' +
+                                        plugin.config.questionCountText
+                                            .replace('%current', '<span class="current">' + count + '</span>')
+                                            .replace('%total', '<span class="total">' +
+                                                questionCount + '</span>') + '</div>');
+                                }
+
+                                var formatQuestion = '';
+                                if (plugin.config.displayQuestionNumber) {
+                                    formatQuestion = plugin.config.questionTemplateText
+                                        .replace('%count', count).replace('%text', question.q);
+                                } else {
+                                    formatQuestion = question.q;
+                                }
+                                questionHTML.append('<h3>' + formatQuestion + '</h3>');
+
+                                // Count the number of true values
+                                var truths = 0;
+                                for (i in question.a) {
+                                    if (question.a.hasOwnProperty(i)) {
+                                        answer = question.a[i];
+                                        if (answer.correct) {
+                                            truths++;
+                                        }
+                                    }
+                                }
+
+                                // Now let's append the answers with checkboxes or radios depending on truth count
+                                var answerHTML = $('<ul class="' + answersClass + '"></ul>');
+
+                                // Get the answers
+                                var answers = plugin.config.randomSortAnswers ?
+                                    question.a.sort(function() { return (Math.round(Math.random())-0.5); }) :
+                                    question.a;
+
+                                // prepare a name for the answer inputs based on the question
+                                var selectAny     = question.select_any ? question.select_any : false,
+                                    forceCheckbox = question.force_checkbox ? question.force_checkbox : false,
+                                    checkbox      = (truths > 1 && !selectAny) || forceCheckbox,
+                                    inputName     = $element.attr('id') + '_question' + (count - 1),
+                                    inputType     = checkbox ? 'checkbox' : 'radio';
+
+                                if( count == quizValues.questions.length ) {
+                                    nextQuestionClass = nextQuestionClass + ' ' + lastQuestionClass;
+                                }
+
+                                for (i in answers) {
+                                    if (answers.hasOwnProperty(i)) {
+                                        answer   = answers[i],
+                                            optionId = inputName + '_' + i.toString();
+
+                                        // If question has >1 true answers and is not a select any, use checkboxes; otherwise, radios
+                                        var input = '<input id="' + optionId + '" name="' + inputName +
+                                            '" type="' + inputType + '" /> ';
+
+                                        var optionLabel = '<label for="' + optionId + '">' + answer.option + '</label>';
+
+                                        var answerContent = $('<li></li>')
+                                            .append(input)
+                                            .append(optionLabel);
+                                        answerHTML.append(answerContent);
+                                    }
+                                }
+
+                                // Append answers to question
+                                questionHTML.append(answerHTML);
+
+                                // If response messaging is NOT disabled, add it
+                                if (plugin.config.perQuestionResponseMessaging || plugin.config.completionResponseMessaging) {
+                                    // Now let's append the correct / incorrect response messages
+                                    var responseHTML = $('<ul class="' + responsesClass + '"></ul>');
+                                    responseHTML.append('<li class="' + correctResponseClass + '">' + question.correct + '</li>');
+                                    responseHTML.append('<li class="' + incorrectResponseClass + '">' + question.incorrect + '</li>');
+
+                                    // Append responses to question
+                                    questionHTML.append(responseHTML);
+                                }
+
+                                // Appends check answer / back / next question buttons
+                                if (plugin.config.backButtonText && plugin.config.backButtonText !== '') {
+                                    questionHTML.append('<a href="#" class="button ' + backToQuestionClass + '">' + plugin.config.backButtonText + '</a>');
+                                }
+
+                                var nextText = plugin.config.nextQuestionText;
+                                if (plugin.config.completeQuizText && count == questionCount) {
+                                    nextText = plugin.config.completeQuizText;
+                                }
+
+                                // If we're not showing responses per question, show next question button and make it check the answer too
+                                if (!plugin.config.perQuestionResponseMessaging) {
+                                    questionHTML.append('<a href="#" class="button ' + nextQuestionClass + ' ' + checkAnswerClass + '">' + nextText + '</a>');
+                                } else {
+                                    questionHTML.append('<a href="#" class="button ' + nextQuestionClass + '">' + nextText + '</a>');
+                                    questionHTML.append('<a href="#" class="button ' + checkAnswerClass + '">' + plugin.config.checkAnswerText + '</a>');
+                                }
+
+                                // Append question & answers to quiz
+                                quiz.append(questionHTML);
+
+                                count++;
+                            }
+                        }
+
+                        // Add the quiz content to the page
+                        $quizArea.append(quiz);
+
+                        // Toggle the start button OR start the quiz if start button is disabled
+                        if (plugin.config.skipStartButton || $quizStarter.length == 0) {
+                            $quizStarter.hide();
+                            plugin.method.startQuiz.apply (this, [{callback: plugin.config.animationCallbacks.startQuiz}]); // TODO: determine why 'this' is being passed as arg to startQuiz method
+                            kN(key,3).apply (null, []);
+                        } else {
+                            $quizStarter.fadeIn(500, kN(key,3)); // 3d notch on key must be on both sides of if/else, otherwise key won't turn
+                        }
+
+                        internal.method.turnKeyAndGo (key, options && options.callback ? options.callback : function () {});
+                    },
+
+                    // Starts the quiz (hides start button and displays first question)
+                    startQuiz: function(options) {
+                        var key, keyNotch, kN;
+                        key = internal.method.getKey (1); // how many notches == how many jQ animations you will run
+                        keyNotch = internal.method.getKeyNotch; // a function that returns a jQ animation callback function
+                        kN = keyNotch; // you specify the notch, you get a callback function for your animation
+
+                        function start(options) {
+                            var firstQuestion = $(_element + ' ' + _questions + ' li').first();
+                            if (firstQuestion.length) {
+                                firstQuestion.fadeIn(500, function () {
+                                    if (options && options.callback) options.callback ();
+                                });
+                            }
+                        }
+
+                        if (plugin.config.skipStartButton || $quizStarter.length == 0) {
+                            start({callback: kN(key,1)});
+                        } else {
+                            $quizStarter.fadeOut(300, function(){
+                                start({callback: kN(key,1)}); // 1st notch on key must be on both sides of if/else, otherwise key won't turn
+                            });
+                        }
+
+                        internal.method.turnKeyAndGo (key, options && options.callback ? options.callback : function () {});
+
+                        if (plugin.config.events &&
+                            plugin.config.events.onStartQuiz) {
+                            plugin.config.events.onStartQuiz.apply (null, []);
+                        }
+                    },
+
+                    // Resets (restarts) the quiz (hides results, resets inputs, and displays first question)
+                    resetQuiz: function(startButton, options) {
+                        var key, keyNotch, kN;
+                        key = internal.method.getKey (1); // how many notches == how many jQ animations you will run
+                        keyNotch = internal.method.getKeyNotch; // a function that returns a jQ animation callback function
+                        kN = keyNotch; // you specify the notch, you get a callback function for your animation
+
+                        $quizResults.fadeOut(300, function() {
+                            $(_element + ' input').prop('checked', false).prop('disabled', false);
+
+                            $quizLevel.attr('class', 'quizLevel');
+                            $(_element + ' ' + _question).removeClass(correctClass).removeClass(incorrectClass).remove(completeClass);
+                            $(_element + ' ' + _answer).removeClass(correctResponseClass).removeClass(incorrectResponseClass);
+
+                            $(_element + ' ' + _question          + ',' +
+                                _element + ' ' + _responses         + ',' +
+                                _element + ' ' + _response          + ',' +
+                                _element + ' ' + _nextQuestionBtn   + ',' +
+                                _element + ' ' + _prevQuestionBtn
+                            ).hide();
+
+                            $(_element + ' ' + _questionCount + ',' +
+                                _element + ' ' + _answers + ',' +
+                                _element + ' ' + _checkAnswerBtn
+                            ).show();
+
+                            $quizArea.append($(_element + ' ' + _questions)).show();
+
+                            kN(key,1).apply (null, []);
+
+                            plugin.method.startQuiz({callback: plugin.config.animationCallbacks.startQuiz},$quizResults); // TODO: determine why $quizResults is being passed
+                        });
+
+                        internal.method.turnKeyAndGo (key, options && options.callback ? options.callback : function () {});
+                    },
+
+                    // Validates the response selection(s), displays explanations & next question button
+                    checkAnswer: function(checkButton, options) {
+                        var key, keyNotch, kN;
+                        key = internal.method.getKey (2); // how many notches == how many jQ animations you will run
+                        keyNotch = internal.method.getKeyNotch; // a function that returns a jQ animation callback function
+                        kN = keyNotch; // you specify the notch, you get a callback function for your animation
+
+                        var questionLI    = $($(checkButton).parents(_question)[0]),
+                            answerLIs     = questionLI.find(_answers + ' li'),
+                            answerSelects = answerLIs.find('input:checked'),
+                            questionIndex = parseInt(questionLI.attr('id').replace(/(question)/, ''), 10),
+                            answers       = questions[questionIndex].a,
+                            selectAny     = questions[questionIndex].select_any ? questions[questionIndex].select_any : false;
+
+                        answerLIs.addClass(incorrectResponseClass);
+
+                        // Collect the true answers needed for a correct response
+                        var trueAnswers = [];
+                        for (i in answers) {
+                            if (answers.hasOwnProperty(i)) {
+                                var answer = answers[i],
+                                    index  = parseInt(i, 10);
+
+                                if (answer.correct) {
+                                    trueAnswers.push(index);
+                                    answerLIs.eq(index).removeClass(incorrectResponseClass).addClass(correctResponseClass);
+                                }
+                            }
+                        }
+
+                        // TODO: Now that we're marking answer LIs as correct / incorrect, we might be able
+                        // to do all our answer checking at the same time
+
+                        // NOTE: Collecting answer index for comparison aims to ensure that HTML entities
+                        // and HTML elements that may be modified by the browser / other scrips match up
+
+                        // Collect the answers submitted
+                        var selectedAnswers = [];
+                        answerSelects.each( function() {
+                            var id = $(this).attr('id');
+                            selectedAnswers.push(parseInt(id.replace(/(.*\_question\d{1,}_)/, ''), 10));
+                        });
+
+                        if (plugin.config.preventUnanswered && selectedAnswers.length === 0) {
+                            alert(plugin.config.preventUnansweredText);
+                            return false;
+                        }
+
+                        // Verify all/any true answers (and no false ones) were submitted
+                        var correctResponse = plugin.method.compareAnswers(trueAnswers, selectedAnswers, selectAny);
+
+                        if (correctResponse) {
+                            questionLI.addClass(correctClass);
+                        } else {
+                            questionLI.addClass(incorrectClass);
+                        }
+
+                        // Toggle appropriate response (either for display now and / or on completion)
+                        questionLI.find(correctResponse ? _correctResponse : _incorrectResponse).show();
+
+                        // If perQuestionResponseMessaging is enabled, toggle response and navigation now
+                        if (plugin.config.perQuestionResponseMessaging) {
+                            $(checkButton).hide();
+                            if (!plugin.config.perQuestionResponseAnswers) {
+                                // Make sure answers don't highlight for a split second before they hide
+                                questionLI.find(_answers).hide({
+                                    duration: 0,
+                                    complete: function() {
+                                        questionLI.addClass(completeClass);
+                                    }
+                                });
+                            } else {
+                                questionLI.addClass(completeClass);
+                            }
+                            questionLI.find('input').prop('disabled', true);
+                            questionLI.find(_responses).show();
+                            questionLI.find(_nextQuestionBtn).fadeIn(300, kN(key,1));
+                            questionLI.find(_prevQuestionBtn).fadeIn(300, kN(key,2));
+                            if (!questionLI.find(_prevQuestionBtn).length) kN(key,2).apply (null, []); // 2nd notch on key must be passed even if there's no "back" button
+                        } else {
+                            kN(key,1).apply (null, []); // 1st notch on key must be on both sides of if/else, otherwise key won't turn
+                            kN(key,2).apply (null, []); // 2nd notch on key must be on both sides of if/else, otherwise key won't turn
+                        }
+
+                        internal.method.turnKeyAndGo (key, options && options.callback ? options.callback : function () {});
+                    },
+
+                    // Moves to the next question OR completes the quiz if on last question
+                    nextQuestion: function(nextButton, options) {
+                        var key, keyNotch, kN;
+                        key = internal.method.getKey (1); // how many notches == how many jQ animations you will run
+                        keyNotch = internal.method.getKeyNotch; // a function that returns a jQ animation callback function
+                        kN = keyNotch; // you specify the notch, you get a callback function for your animation
+
+                        var currentQuestion = $($(nextButton).parents(_question)[0]),
+                            nextQuestion    = currentQuestion.next(_question),
+                            answerInputs    = currentQuestion.find('input:checked');
+
+                        // If response messaging has been disabled or moved to completion,
+                        // make sure we have an answer if we require it, let checkAnswer handle the alert messaging
+                        if (plugin.config.preventUnanswered && answerInputs.length === 0) {
+                            return false;
+                        }
+
+                        if (nextQuestion.length) {
+                            currentQuestion.fadeOut(300, function(){
+                                nextQuestion.find(_prevQuestionBtn).show().end().fadeIn(500, kN(key,1));
+                                if (!nextQuestion.find(_prevQuestionBtn).show().end().length) kN(key,1).apply (null, []); // 1st notch on key must be passed even if there's no "back" button
+                            });
+                        } else {
+                            kN(key,1).apply (null, []); // 1st notch on key must be on both sides of if/else, otherwise key won't turn
+                            plugin.method.completeQuiz({callback: plugin.config.animationCallbacks.completeQuiz});
+                        }
+
+                        internal.method.turnKeyAndGo (key, options && options.callback ? options.callback : function () {});
+                    },
+
+                    // Go back to the last question
+                    backToQuestion: function(backButton, options) {
+                        var key, keyNotch, kN;
+                        key = internal.method.getKey (2); // how many notches == how many jQ animations you will run
+                        keyNotch = internal.method.getKeyNotch; // a function that returns a jQ animation callback function
+                        kN = keyNotch; // you specify the notch, you get a callback function for your animation
+
+                        var questionLI = $($(backButton).parents(_question)[0]),
+                            responses  = questionLI.find(_responses);
+
+                        // Back to question from responses
+                        if (responses.css('display') === 'block' ) {
+                            questionLI.find(_responses).fadeOut(300, function(){
+                                questionLI.removeClass(correctClass).removeClass(incorrectClass).removeClass(completeClass);
+                                questionLI.find(_responses + ', ' + _response).hide();
+                                questionLI.find(_answers).show();
+                                questionLI.find(_answer).removeClass(correctResponseClass).removeClass(incorrectResponseClass);
+                                questionLI.find('input').prop('disabled', false);
+                                questionLI.find(_answers).fadeIn(500, kN(key,1)); // 1st notch on key must be on both sides of if/else, otherwise key won't turn
+                                questionLI.find(_checkAnswerBtn).fadeIn(500, kN(key,2));
+                                questionLI.find(_nextQuestionBtn).hide();
+
+                                // if question is first, don't show back button on question
+                                if (questionLI.attr('id') != 'question0') {
+                                    questionLI.find(_prevQuestionBtn).show();
+                                } else {
+                                    questionLI.find(_prevQuestionBtn).hide();
+                                }
+                            });
+
+                            // Back to previous question
+                        } else {
+                            var prevQuestion = questionLI.prev(_question);
+
+                            questionLI.fadeOut(300, function() {
+                                prevQuestion.removeClass(correctClass).removeClass(incorrectClass).removeClass(completeClass);
+                                prevQuestion.find(_responses + ', ' + _response).hide();
+                                prevQuestion.find(_answers).show();
+                                prevQuestion.find(_answer).removeClass(correctResponseClass).removeClass(incorrectResponseClass);
+                                prevQuestion.find('input').prop('disabled', false);
+                                prevQuestion.find(_nextQuestionBtn).hide();
+                                prevQuestion.find(_checkAnswerBtn).show();
+
+                                if (prevQuestion.attr('id') != 'question0') {
+                                    prevQuestion.find(_prevQuestionBtn).show();
+                                } else {
+                                    prevQuestion.find(_prevQuestionBtn).hide();
+                                }
+
+                                prevQuestion.fadeIn(500, kN(key,1));
+                                kN(key,2).apply (null, []); // 2nd notch on key must be on both sides of if/else, otherwise key won't turn
+                            });
+                        }
+
+                        internal.method.turnKeyAndGo (key, options && options.callback ? options.callback : function () {});
+                    },
+
+                    // Hides all questions, displays the final score and some conclusive information
+                    completeQuiz: function(options) {
+                        var key, keyNotch, kN;
+                        key = internal.method.getKey (1); // how many notches == how many jQ animations you will run
+                        keyNotch = internal.method.getKeyNotch; // a function that returns a jQ animation callback function
+                        kN = keyNotch; // you specify the notch, you get a callback function for your animation
+
+                        var score        = $(_element + ' ' + _correct).length,
+                            displayScore = score;
+                        if (plugin.config.scoreAsPercentage) {
+                            displayScore = (score / questionCount).toFixed(2)*100 + "%";
+                        }
+
+                        if (plugin.config.disableScore) {
+                            $(_quizScore).remove()
+                        } else {
+                            $(_quizScore + ' span').html(plugin.config.scoreTemplateText
+                                .replace('%score', displayScore).replace('%total', questionCount));
+                        }
+
+                        if (plugin.config.disableRanking) {
+                            $(_quizLevel).remove()
+                        } else {
+                            var levels    = [
+                                    quizValues.info.level1, // 80-100%
+                                    quizValues.info.level2, // 60-79%
+                                    quizValues.info.level3, // 40-59%
+                                    quizValues.info.level4, // 20-39%
+                                    quizValues.info.level5  // 0-19%
+                                ],
+                                levelRank = plugin.method.calculateLevel(score),
+                                levelText = $.isNumeric(levelRank) ? levels[levelRank] : '';
+
+                            $(_quizLevel + ' span').html(levelText);
+                            $(_quizLevel).addClass('level' + levelRank);
+                        }
+
+                        $quizArea.fadeOut(300, function() {
+                            // If response messaging is set to show upon quiz completion, show it now
+                            if (plugin.config.completionResponseMessaging) {
+                                $(_element + ' .button:not(' + _tryAgainBtn + '), ' + _element + ' ' + _questionCount).hide();
+                                $(_element + ' ' + _question + ', ' + _element + ' ' + _answers + ', ' + _element + ' ' + _responses).show();
+                                $quizResults.append($(_element + ' ' + _questions)).fadeIn(500, kN(key,1));
+                            } else {
+                                $quizResults.fadeIn(500, kN(key,1)); // 1st notch on key must be on both sides of if/else, otherwise key won't turn
+                            }
+                        });
+
+                        internal.method.turnKeyAndGo (key, options && options.callback ? options.callback : function () {});
+
+                        if (plugin.config.events &&
+                            plugin.config.events.onCompleteQuiz) {
+                            plugin.config.events.onCompleteQuiz.apply (null, [{
+                                questionCount: questionCount,
+                                score: score
+                            }]);
+                        }
+                    },
+
+                    // Compares selected responses with true answers, returns true if they match exactly
+                    compareAnswers: function(trueAnswers, selectedAnswers, selectAny) {
+                        if ( selectAny ) {
+                            return $.inArray(selectedAnswers[0], trueAnswers) > -1;
+                        } else {
+                            // crafty array comparison (http://stackoverflow.com/a/7726509)
+                            return ($(trueAnswers).not(selectedAnswers).length === 0 && $(selectedAnswers).not(trueAnswers).length === 0);
+                        }
+                    },
+
+                    // Calculates knowledge level based on number of correct answers
+                    calculateLevel: function(correctAnswers) {
+                        var percent = (correctAnswers / questionCount).toFixed(2),
+                            level   = null;
+
+                        if (plugin.method.inRange(0, 0.20, percent)) {
+                            level = 4;
+                        } else if (plugin.method.inRange(0.21, 0.40, percent)) {
+                            level = 3;
+                        } else if (plugin.method.inRange(0.41, 0.60, percent)) {
+                            level = 2;
+                        } else if (plugin.method.inRange(0.61, 0.80, percent)) {
+                            level = 1;
+                        } else if (plugin.method.inRange(0.81, 1.00, percent)) {
+                            level = 0;
+                        }
+
+                        return level;
+                    },
+
+                    // Determines if percentage of correct values is within a level range
+                    inRange: function(start, end, value) {
+                        return (value >= start && value <= end);
+                    }
+                };
+
+                plugin.init = function() {
+                    // Setup quiz
+                    plugin.method.setupQuiz.apply (null, [{callback: plugin.config.animationCallbacks.setupQuiz}]);
+
+                    // Bind "start" button
+                    $quizStarter.on('click', function(e) {
+                        e.preventDefault();
+
+                        if (!this.disabled && !$(this).hasClass('disabled')) {
+                            plugin.method.startQuiz.apply (null, [{callback: plugin.config.animationCallbacks.startQuiz}]);
+                        }
+                    });
+
+                    // Bind "try again" button
+                    $(_element + ' ' + _tryAgainBtn).on('click', function(e) {
+                        e.preventDefault();
+                        plugin.method.resetQuiz(this, {callback: plugin.config.animationCallbacks.resetQuiz});
+                    });
+
+                    // Bind "check answer" buttons
+                    $(_element + ' ' + _checkAnswerBtn).on('click', function(e) {
+                        e.preventDefault();
+                        plugin.method.checkAnswer(this, {callback: plugin.config.animationCallbacks.checkAnswer});
+                    });
+
+                    // Bind "back" buttons
+                    $(_element + ' ' + _prevQuestionBtn).on('click', function(e) {
+                        e.preventDefault();
+                        plugin.method.backToQuestion(this, {callback: plugin.config.animationCallbacks.backToQuestion});
+                    });
+
+                    // Bind "next" buttons
+                    $(_element + ' ' + _nextQuestionBtn).on('click', function(e) {
+                        e.preventDefault();
+                        plugin.method.nextQuestion(this, {callback: plugin.config.animationCallbacks.nextQuestion});
+                    });
+
+                    // Accessibility (WAI-ARIA).
+                    var _qnid = $element.attr('id') + '-name';
+                    $quizName.attr('id', _qnid);
+                    $element.attr({
+                        'aria-labelledby': _qnid,
+                        'aria-live': 'polite',
+                        'aria-relevant': 'additions',
+                        'role': 'form'
+                    });
+                    $(_quizStarter + ', [href = "#"]').attr('role', 'button');
+                };
+
+                plugin.init();
+            };
+
+            $.fn.slickQuiz = function(options) {
+                return this.each(function() {
+                    if (undefined === $(this).data('slickQuiz')) {
+                        var plugin = new $.slickQuiz(this, options);
+                        $(this).data('slickQuiz', plugin);
+                    }
+                });
+            };
+        })(jQuery);
+
+        // Setup your quiz text and questions here
+
+        // NOTE: pay attention to commas, IE struggles with those bad boys
+
+        var quizJSON = {
+            "info": {
+                "name":    "Quiz: la pollution de l'air",
+                "main":    "<p>Chacun d’entre nous a le droit de vivre dans un environnement équilibré et respectueux de la santé, donc de respirer un air de qualité. Pourtant, on rejette dans l’atmosphère des substances qui altèrent la qualité de l’air et affectent notre santé. Quels sont ces impacts </p>",
+                "results": "",
+                "level1":  "Excellent!",
+                "level2":  "Fail",
+                "level3":  "Fail",
+                "level4":  "Fail",
+                "level5":  "Fail"   // no comma here
+            },
+            "questions": [
+                { // Question 1 - Multiple Choice, Single True Answer
+                    "q": "Les particules fines ont elles un impact sur notre santé ?",
+                    "a": [
+                        {"option": "Non, elle sont trop petite pour être inhalé",      "correct": false},
+                        {"option": "Oui, elles peuvent nuire à notre santé",     "correct": true} // no comma here
+                    ],
+                    "correct": "<p><span>Correct!</span> <h3>Particules (PM10 et PM2.5) </h3> \n" +
+                    "\n" +
+                    "Les particules diesel, principales composantes des particules issues du trafic, sont classées cancérogènes avérés (groupe 1) par le CIRC depuis juin 2012" +
+                    "Ces particules de petites tailles résultent soit de processus de combustion (industrie, transport, chauffage, etc.), soit de mécanismes chimiques à partir de particules primaires présentes dans l’atmosphère, en l’occurrence des interactions entre ammoniac et oxydes d’azotes. Les poussières sont alors des particules dites secondaires.\n" +
+                    "\n" +
+                    "L’effet de ces particules sur la santé dépend du diamètre des particules. En effet, les particules dont le diamètre est supérieur à 10 µm sont arrêtées et éliminées au niveau du nez et des voies respiratoires supérieures. Par contre, elles deviennent plus toxiques pour l’organisme lorsqu’elles ont un diamètre inférieur à 10 µm, puisqu’elles peuvent pénétrer plus profondément dans l’appareil respiratoire. Le rôle des particules en suspension a été montré dans certaines atteintes fonctionnelles respiratoires, le déclenchement de crises d’asthme et la hausse du nombre de décès pour cause cardio-vasculaire ou respiratoire, notamment chez les personnes les plus sensibles.\n" +
+                    "\n" +
+                    "Certains hydrocarbures aromatiques polycycliques portés par les particules d’origine automobile, sont classés comme probablement cancérigènes chez l’homme. Source : http://www.atmo-grandest.eu</h5><br />",
+                    "incorrect": "<p><span>Incorrect!</span> Particules (PM10 et PM2.5)\n" +
+                    "\n" +
+                    "Ces particules de petites tailles résultent soit de processus de combustion (industrie, transport, chauffage, etc.), soit de mécanismes chimiques à partir de particules primaires présentes dans l’atmosphère, en l’occurrence des interactions entre ammoniac et oxydes d’azotes. Les poussières sont alors des particules dites secondaires.\n" +
+                    "\n" +
+                    "L’effet de ces particules sur la santé dépend du diamètre des particules. En effet, les particules dont le diamètre est supérieur à 10 µm sont arrêtées et éliminées au niveau du nez et des voies respiratoires supérieures. Par contre, elles deviennent plus toxiques pour l’organisme lorsqu’elles ont un diamètre inférieur à 10 µm, puisqu’elles peuvent pénétrer plus profondément dans l’appareil respiratoire. Le rôle des particules en suspension a été montré dans certaines atteintes fonctionnelles respiratoires, le déclenchement de crises d’asthme et la hausse du nombre de décès pour cause cardio-vasculaire ou respiratoire, notamment chez les personnes les plus sensibles.\n" +
+                    "\n" +
+                    "Certains hydrocarbures aromatiques polycycliques portés par les particules d’origine automobile, sont classés comme probablement cancérigènes chez l’homme. Source : http://www.atmo-grandest.eu \n" +
+                    "\n</h5><br />" // no comma here
+                },
+                { // Question 2 - Multiple Choice, Single True Answers,
+                    "q": "Que faire en cas de pic de pollution ?.",
+                    "a": [
+                        {"option": "Sortir à l'extérieur sous aucun prétexte",               "correct": false},
+                        {"option": "Limiter les déplacements sur les grands axes routiers",              "correct": true}// no comma here
+                    ],
+                    "correct": "<p><span>Correct!</span>. <h5>La pollution intérieure peut se révéler plus forte qu’à l’extérieur. La diversité des sources de pollution intérieure est très importante et l’aération quotidienne des pièces d’habitation est primordiale en choisissant les heures les moins polluées de la journée (par exemple en dehors des pointes de trafic ou la nuit \n</h5> <br> <img src='http://www.who.int/phe/infographics/Air-pollution-INFOGRAPHICS-French-5-1200px.jpg?ua=1' alt=''> <a href=\"http://www.who.int/phe/infographics/Air-pollution-INFOGRAPHICS-French-5-1200px.jpg?ua=1\" target=\"_blank\"> Source: OMS</a>",
+                    "incorrect": "<p><span>Incorrect!</span><h5>La pollution intérieure peut se révéler plus forte qu’à l’extérieur. La diversité des sources de pollution intérieure est très importante et l’aération quotidienne des pièces d’habitation est primordiale en choisissant les heures les moins polluées de la journée (par exemple en dehors des pointes de trafic ou la nuit</h5> <br> Agir pour préserver la qualité de l’air est essentiel, mais se\n" +
+                    "prémunir des effets de la pollution de l’air extérieur l’est\n" +
+                    "aussi. Voici quelques conseils à suivre, en particulier pour les\n" +
+                    "personnes sensibles et vulnérables (jeunes enfants, personnes\n" +
+                    "âgées, femmes enceintes, malades…):\n" +
+                    " <br> limitez les activités physiques et sportives intenses (dont les\n" +
+                    "compétitions), autant en plein air qu’à l’intérieur ;\n" +
+                    " <br>limitez les déplacements sur les grands axes routiers et à leurs\n" +
+                    "abords, aux périodes de pointe (aux horaires éventuellement\n" +
+                    "précisés au niveau local) ;\n" +
+                    " <br>en cas de symptômes ou d’inquiétude, prenez conseil auprès\n" +
+                    "de votre pharmacien ou consultez votre médecin ou contactez\n" +
+                    "la permanence sanitaire locale lorsqu’elle est mise en place ;\n" +
+                    " <br>en cas d’épisode de pollution à l’ozone : limitez les sorties durant\n" +
+                    "l’après-midi et limitez les activités physiques et sportives intenses\n" +
+                    "(dont les compétitions) en plein air ; celles à l’intérieur peuvent\n" +
+                    "être maintenues.</h5> <br> <img src='http://www.who.int/phe/infographics/Air-pollution-INFOGRAPHICS-French-5-1200px.jpg?ua=1' alt=''>" // no comma here
+                },
+                { // Question 3 - Multiple Choice, Multiple True Answers, Select All
+                    "q": "Les risques pour la santé ne concernent que les habitants des villes",
+                    "a": [
+                        {"option": "Vrai",           "correct": false},
+                        {"option": "Faux",          "correct": true} // no comma here
+                    ],
+                    "correct": "<p><span>Correct!</span>Si les effets de cette pollution sont plus importants dans les grandes villes, les villes moyennes et petites et les milieux ruraux sont aussi concernés, avec des pertes d'espérance de vie estimées entre neuf et quinze mois..</p> <br>  <img src='http://www.who.int/phe/infographics/Air-pollution-INFOGRAPHICS-French-4-1200px.jpg?ua=1' alt=''> <br> <a href=\"http://www.who.int/phe/infographics/Air-pollution-INFOGRAPHICS-French-4-1200px.jpg?ua=1\" target=\"_blank\">Source : OMS.</a>",
+                    "incorrect": "<p><span>Incorrect!</span>Si les effets de cette pollution sont plus importants dans les grandes villes, les villes moyennes et petites et les milieux ruraux sont aussi concernés, avec des pertes d'espérance de vie estimées entre neuf et quinze mois.</p> <br> <img src='http://www.who.int/phe/infographics/Air-pollution-INFOGRAPHICS-French-4-1200px.jpg?ua=1' alt=''> <br><a href=\"http://www.who.int/phe/infographics/Air-pollution-INFOGRAPHICS-French-4-1200px.jpg?ua=1\" target=\"_blank\">Source : OMS.</a> " // no comma here
+                },
+                { // Question 4
+                    "q": "La pollution de l'air extérieur est le seul type de pollution de l'air néfaste pour l'Homme",
+                    "a": [
+                        {"option": "Vrai",    "correct": false},
+                        {"option": "Faux",   "correct": true} // no comma here
+                    ],
+                    "correct": "<p><span>Correct!</span> Nous passons jusqu’à 90 % de notre temps dans des espaces clos et respirons un air qui peut être pollué par les appareils de chauffage et de cuisson, le tabagisme, les produits d’entretien, les peintures, l’ameublement… <br> <img src='http://www.who.int/phe/infographics/Air-pollution-INFOGRAPHICS-French-5-1200px.jpg?ua=1' alt=''><br><a href='http://www.who.int/phe/infographics/Air-pollution-INFOGRAPHICS-French-5-1200px.jpg?ua=1'></a>",
+                    "incorrect": "<p><span>Incorrect!</span> Nous passons jusqu’à 90 % de notre temps dans des espaces clos et respirons un air qui peut être pollué par les appareils de chauffage et de cuisson, le tabagisme, les produits d’entretien, les peintures, l’ameublement… Chaque année, ce sont 3.8 million de personnes qui décèdent pour cause de pollution de l'air intérieur. <br> <img src='http://www.who.int/phe/infographics/Air-pollution-INFOGRAPHICS-French-5-1200px.jpg?ua=1' alt=''><br><a href='http://www.who.int/phe/infographics/Air-pollution-INFOGRAPHICS-French-5-1200px.jpg?ua=1'></a>" // no comma here
+                },
+                { // Question 5
+                    "q": "Sommes nous tous égaux face à la pollution de l'air?.",
+                    "a": [
+                        {"option": "Oui",    "correct": false},
+                        {"option": "Non",     "correct": true} // no comma here
+                    ],
+                    "correct": "<p><span>Correct!</span> La pollution de l'air est un risque environnemental majeur pour la santé. Cependant,nous ne sommes pas tous égaux face à la pollution de l’air. Selon l’endroit où nous vivons, les activités que nous faisons, nos antécédents médicaux, chacun subit des dommages différents. <img src='http://www.who.int/phe/infographics/Air-pollution-INFOGRAPHICS-French-3-1200px.jpg?ua=1' alt=''> <br> <a href='http://www.who.int/phe/infographics/Air-pollution-INFOGRAPHICS-French-3-1200px.jpg?ua=1'>Source : OMS</a>",
+                    "incorrect": "<p><span>Incorrect!</span>La pollution de l'air est un risque environnemental majeur pour la santé. Cependant, nous ne sommes pas tous égaux face à la pollution de l’air. Selon l’endroit où nous vivons, les activités que nous faisons, nos antécédents médicaux, chacun subit des dommages différents. Lors des pics de pollution  <img src='http://www.who.int/phe/infographics/Air-pollution-INFOGRAPHICS-French-3-1200px.jpg?ua=1' alt=''><br> <a href='http://www.who.int/phe/infographics/Air-pollution-INFOGRAPHICS-French-3-1200px.jpg?ua=1'>Source : OMS</a>" // no comma here
+                }
+
+            ]
+        };
+
+
+    </script>
+{% endblock %}
+
+{% endblock %}
+
+
+

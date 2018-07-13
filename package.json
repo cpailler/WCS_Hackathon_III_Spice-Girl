@@ -1,0 +1,36 @@
+{
+  "name": "wcs_hackathon_iii_spice-girl",
+  "version": "1.0.0",
+  "description": "Spice_Girl ==========",
+  "main": "webpack.config.js",
+  "directories": {
+    "test": "tests"
+  },
+  "dependencies": {
+    "@symfony/webpack-encore": "^0.20.1",
+    "ajv": "^6.5.2",
+    "jquery": "^3.3.1",
+    "jquery-ui": "^1.12.1",
+    "popper.js": "^1.14.3",
+    "webpack-jquery-ui": "^1.0.0",
+    "webpack-notifier": "^1.6.0"
+  },
+  "devDependencies": {
+    "bootstrap": "^4.1.1",
+    "node-sass": "^4.9.2",
+    "sass-loader": "^7.0.3"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/cpailler/WCS_Hackathon_III_Spice-Girl.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/cpailler/WCS_Hackathon_III_Spice-Girl/issues"
+  },
+  "homepage": "https://github.com/cpailler/WCS_Hackathon_III_Spice-Girl#readme"
+}
