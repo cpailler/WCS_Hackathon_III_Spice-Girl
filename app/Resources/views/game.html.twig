@@ -167,18 +167,19 @@
 
                                 {% for atout in atouts %}
                                     {% if (atout.id == 1 and atout.quantite == 0) or (atout.id == 2 and atout.quantite <10)  %}
-                                    <div class="col-4">
+                                    <div class="col-6">
                                         <a href="{{ path('achat_atout', {'id':atout.id}) }}">
                                             <button class="show-modal-dev open-modal ">{{ atout.nom }}</button>
                                         </a>
                                         <p class="description">{{ atout.description }}</p>
-                                    </div>
+
                                     <p><img class="mini_icon"
                                             src="{{ asset('build/images/piggy_bank.a0482efe.png') }}">
                                         <strong id="prix">{{ ((atout.prix * facteurInflation.facteur) |round)|number_format(0, ' ', ',') }}
                                             K€</strong></p>
+                                    </div>
                                     {% else %}
-                                        <div class="col-4">
+                                        <div class="col-6">
                                             <button class="show-modal-dev open-modal " style="background-color: gray">{{ atout.nom }}</button>
                                             <p class="description">{{ atout.description }}</p>
                                         </div>
