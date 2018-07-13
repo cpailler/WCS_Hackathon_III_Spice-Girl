@@ -30,7 +30,21 @@
         <!--class="quizLevel" commentted out-->
         <h3 class="">
             <br><br><br><h4 style="text-align: center">Vous voulez en savoir plus ? Rdv le 19 septembre 2018, pour la 4e journée nationale de la qualité de l'air</h4>
-            <img src="/images/18116_JNQA2018_vignette-3_TW_858x480_DEF.jpg" alt="" style="margin-left: 20%">
+            <img src="/images/18116_JNQA2018_vignette-3_TW_858x480_DEF.jpg" alt="" style="margin-left: 20%"><br><br>
+            <div>
+                <a href="{{ path('homepage') }}" style="text-decoration:none">
+                    <div class="container"></div>
+                    <div class="cube">
+                        <div class="default-state">
+                            <span>try again</span>
+                        </div>
+                        <div class="active-state">
+                            <span>accueil</span>
+                        </div>
+                    </div>
+                </a>
+            </div>
+
                                     <span>
                                         <!-- where the quiz ranking level goes -->
                                     </span>
@@ -38,8 +52,10 @@
         <div class="quizResultsCopy">
             <!-- where the quiz result copy goes -->
         </div>
+
     </div>
 </div>
+
 {% block javascripts %}
     <script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
     <script src=""></script>
