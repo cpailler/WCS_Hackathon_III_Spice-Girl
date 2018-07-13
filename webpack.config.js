@@ -32,14 +32,6 @@ Encore
     .enableBuildNotifications()
     .enableSassLoader()
 
-    .configureBabel(function(babelConfig) {
-        // add additional presets
-        babelConfig.presets.push('es2017');
-
-        // no plugins are added by default, but you can add some
-        // babelConfig.plugins.push('styled-jsx/babel');
-    })
-
 // allows legacy applications to use $/jQuery as a global variable
     .autoProvidejQuery()
 

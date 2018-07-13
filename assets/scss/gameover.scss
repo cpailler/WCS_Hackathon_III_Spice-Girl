@@ -12,3 +12,10 @@ body {
   transform: translateX(-50%);
   border-bottom: 2px solid white;
 }
+
+.centrage_bouton{
+  position: absolute;
+  top: 80%;
+  left: 50%;
+  transform: translateX(-50%);
+}
