@@ -28,7 +28,15 @@
                             <img class="mini_icon" src="{{ asset('build/images/fleche_ga.b4c5b25c.png') }}"> Niveau d'inflation : {{ facteurInflation.facteur|round(2) }}
                         </li>
                         <li>
-                            <img class="mini_icon" src="{{ asset('build/images/dollar.276bfed5.png') }}"> Revenus par tour : {{ (300*nbUsines*facteurGain.facteur) | round }} K€
+                            <!-- <img class="mini_icon" src="{{ asset('build/images/dollar.276bfed5.png') }}"> -->
+                            <div class="coin">
+                                <div class="front"></div>
+                                <div class="front_b"></div>
+                                <div class="back"></div>
+                                <div class="back_b"></div>
+                            </div>
+                            Revenus par tour : {{ (300*nbUsines*facteurGain.facteur) | round }} K€
+
                         </li>
                     </ul>
                 </div>
