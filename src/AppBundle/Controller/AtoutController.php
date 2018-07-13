@@ -25,7 +25,7 @@ class AtoutController extends Controller
         $facteurInflation = $em->getRepository(FacteurInflationGlobal::class)->findAll()[0];
 
         if($banque->getMoney()<ceil($atout->getPrix() * $facteurInflation->getFacteur())){
-            $this->addFlash('error', "Vous n'avez pas assez d'argent pour investir dans cette amélioration.");
+            $this->addFlash('danger', "Vous n'avez pas assez d'argent pour investir dans cette amélioration.");
         }else{
             $banque->setMoney(($banque->getMoney() - ceil($atout->getPrix() * $facteurInflation->getFacteur()
                 )));
