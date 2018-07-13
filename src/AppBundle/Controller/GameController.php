@@ -79,7 +79,7 @@ class GameController extends Controller
             'facteurPollutionGlobal' => $facteurPollutionGlobal,
             'facteurInflation' => $facteurInflation,
             'facteurGain' => $facteurGain,
-            'atout' => $atout,
+            'atouts' => $atout,
             'departements' => $departements,
             'developpements' => $developpements,
             'eventAleatoire' => $eventAleatoire,
