@@ -38,6 +38,13 @@ class Infobulle
     /**
      * @var string
      *
+     * @ORM\Column(name="source", type="string", length=255)
+     */
+    private $source;
+
+    /**
+     * @var string
+     *
      * @ORM\Column(name="lien", type="string", length=255)
      */
     private $lien;

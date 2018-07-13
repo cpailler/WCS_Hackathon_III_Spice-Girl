@@ -12,6 +12,7 @@ use AppBundle\Entity\FacteurGainTotal;
 use AppBundle\Entity\FacteurInflationGlobal;
 use AppBundle\Entity\FacteurPollutionGlobal;
 use AppBundle\Entity\NiveauPollutionGlobal;
+use AppBundle\Entity\Personnage;
 use AppBundle\Entity\TypeDeveloppement;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
@@ -37,6 +38,7 @@ class GameController extends Controller
         $typeDeveloppement = $em->getRepository(TypeDeveloppement::class)->findAll();
         $infobulles = $em->getRepository(Infobulle::class)->FindAll();
         $nbUsines = count($em->getRepository(Departement::class)->findBy(array('usine'=>true)));
+        $personnage = $em->getRepository(Personnage::class)->findOneBy(array('actif'=>true));
         foreach ($departements as $departement){
             switch ($departement->getNiveauPollution()){
                 case $departement->getNiveauPollution()<10 :
@@ -79,7 +81,7 @@ class GameController extends Controller
             'facteurPollutionGlobal' => $facteurPollutionGlobal,
             'facteurInflation' => $facteurInflation,
             'facteurGain' => $facteurGain,
-            'atout' => $atout,
+            'atouts' => $atout,
             'departements' => $departements,
             'developpements' => $developpements,
             'eventAleatoire' => $eventAleatoire,
@@ -88,7 +90,8 @@ class GameController extends Controller
             'infobulle' => $infobulles[array_rand($infobulles)],
             'typeDeveloppements' => $typeDeveloppement,
             'couleur' => $couleur,
-            'nbUsines' => $nbUsines
+            'nbUsines' => $nbUsines,
+            'personnage'=>$personnage
         ));
     }
 }

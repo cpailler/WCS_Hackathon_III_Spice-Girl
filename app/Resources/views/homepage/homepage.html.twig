@@ -90,44 +90,40 @@
                     <div class="col-md-4 offset-md-2">
                         <img src="{{ asset('images/homme_ga.png') }}" alt="" class="image-profil"><br><br>
                         <!--Contact box-->
+                        <a href="{{ path('initial',{'id':1}) }}" style="text-decoration:none">
                         <div class="hideme">
                             <div class="container"></div>
                             <div class="cube">
-                                <a href="{{ path('initial', {id:1}) }}" class="bouton-basique">
-                                    <div class="default-state">
-                                        <a href="{{ path('initial', {id:1}) }}" class="bouton-basique">
-                                            <span>Choose the Shithead</span>
-                                        </a>
-                                    </div>
-                                </a>
-                                <div class="active-state">
-                                    <a href="{{ path('initial', {id:1}) }}" class="bouton-hover">
-                                        <span>Germain</span>
-                                    </a>
+                                <div class="default-state">
+                                    <span>Choose the Shithead</span>
                                 </div>
+
+                                <div class="active-state">
+                                    <span>Germain</span>
+
+                                </div>
+
                             </div>
-                            <a href="{{ path('initial', {id:1}) }}" class="bouton-basique">test</a>
                         </div>
+                        </a>
                     </div>
 
                     <div class="col-md-4">
                         <img src="{{ asset('images/femme_ga.png') }}" alt="" class="image-profil"><br><br>
                         <!--Contact box-->
+                        <a href="{{ path('initial',{'id':2}) }}" style="text-decoration:none">
                         <div class="hideme">
                             <div class="container"></div>
                             <div class="cube">
                                 <div class="default-state">
-                                    <a href="{{ path('initial', {id:2}) }}" class="bouton-basique">
-                                        <span>Choose The Bitch</span>
-                                    </a>
+                                    <span>Choose The Bitch</span>
                                 </div>
-                                <div class="active-state bouton-hover">
-                                    <span>
-                                        <a href="{{ path('initial', {id:2}) }}">Germaine</a>
-                                    </span>
+                                <div class="active-state">
+                                    <span>Germaine</span>
                                 </div>
                             </div>
                         </div>
+                        </a>
                     </div>
 
                 </div>
