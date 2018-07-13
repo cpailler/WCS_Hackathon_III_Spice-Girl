@@ -48,5 +48,85 @@ a:hover{
   width: 100%;
 }
 
+//ajout qui casse tout ?
+:root {
+  --cube-height: 60px;
+}
+.container {
+  z-index: 1;
+  position: absolute;
+  margin-right: auto;
+  margin-left: auto;
+  right: 0;
+  left: 0;
+  width: 260px;
+  height: var(--cube-height);
+}
+
+.cube {
+  width: 250px;
+  height: var(--cube-height);
+  -webkit-transition: all 300ms ease-out;
+  -moz-transition: all 300ms ease-out;
+  -o-transition: all 300ms ease-out;
+  transition: all 300ms ease-out;
+  -webkit-transform-style: preserve-3d;
+  -moz-transform-style: preserve-3d;
+  -o-transform-style: preserve-3d;
+  -ms-transform-style: preserve-3d;
+  transform-style: preserve-3d;
+}
+
+.default-state,
+.active-state {
+  height: var(--cube-height);
+}
+
+.default-state {
+  border: 1px solid #721212;
+  -webkit-transform: translateZ(calc((var(--cube-height)/2)));
+  -moz-transform: translateZ(calc((var(--cube-height)/2)));
+  -o-transform: translateZ(calc((var(--cube-height)/2)));
+  -ms-transform: translateZ(calc((var(--cube-height)/2)));
+  transform: translateZ(calc((var(--cube-height)/2)));
+}
+
+.active-state {
+  color: white;
+  -webkit-transform: rotateX(90deg) translateZ(calc((var(--cube-height)*1.5)));
+  -moz-transform: rotateX(90deg) translateZ(calc((var(--cube-height)*1.5)));
+  -o-transform: rotateX(90deg) translateZ(calc((var(--cube-height)*1.5)));
+  -ms-transform: rotateX(90deg) translateZ(calc((var(--cube-height)*1.5)));
+  transform: rotateX(90deg) translateZ(calc((var(--cube-height)*1.5)));
+}
+
+.container:hover + .cube {
+  -webkit-transform: rotateX(-90deg);
+  -moz-transform: rotateX(-90deg);
+  -o-transform: rotateX(-90deg);
+  -ms-transform: rotateX(-90deg);
+  transform: rotateX(-90deg);
+}
+
+.cube {
+  text-align: center;
+  margin: 0 auto;
+}
+
+.default-state,
+.active-state {
+  font-size: 20px;
+  text-transform: uppercase;
+  font-family: 'Lato', sans-serif;
+  font-weight: 300;
+  color: #721212;
+  line-height: var(--cube-height);
+}
+
+.active-state {
+  background: #721212;
+  color: white;
+}
+
 
 

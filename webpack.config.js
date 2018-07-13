@@ -10,6 +10,7 @@ Encore
 
     .addEntry('css/stylegame', './assets/scss/stylegame.scss')
     .addEntry('js/stylegame', './assets/js/stylegame.js')
+    .addEntry('css/gameover', './assets/scss/gameover.scss')
 
     .addEntry('css/quiz', './assets/scss/quiz.scss')
 
