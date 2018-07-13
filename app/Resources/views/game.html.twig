@@ -10,6 +10,20 @@
     <div class="container-fluid">
 
         <div class="row">
+            <div class="gamer">
+                <ul class="navbar_detail">
+                    <li>
+                        <img class="mini_icon" src="{{ asset('build/images/cheminee_ga.0ab032e6.png') }}"> Niveau de Pollution global : {{ niveauPollution.niveauGlobal|round }}%
+                    </li>
+                    <li>
+                        <img class="mini_icon" src="{{ asset('build/images/fleche_ga.b4c5b25c.png') }}"> Niveau d'inflation : {{ facteurInflation.facteur|round(2) }}
+                    </li>
+                    <li>
+                        <img class="mini_icon" src="{{ asset('build/images/dollar.276bfed5.png') }}"> Revenus par tour : {{ (300*nbUsines*facteurGain.facteur) | round }} K€
+                    </li>
+                </ul>
+            </div>
+
             <div class="col-12">
 
                 {% for label, messages in app.flashes %}
@@ -20,19 +34,6 @@
                     {% endfor %}
                 {% endfor %}
 
-                <div class="gamer">
-                    <ul class="navbar_detail">
-                        <li>
-                            <img class="mini_icon" src="{{ asset('build/images/cheminee_ga.0ab032e6.png') }}"> Niveau de Pollution global : {{ niveauPollution.niveauGlobal|round }}%
-                        </li>
-                        <li>
-                            <img class="mini_icon" src="{{ asset('build/images/fleche_ga.b4c5b25c.png') }}"> Niveau d'inflation : {{ facteurInflation.facteur|round(2) }}
-                        </li>
-                        <li>
-                            <img class="mini_icon" src="{{ asset('build/images/dollar.276bfed5.png') }}"> Revenus par tour : {{ (300*nbUsines*facteurGain.facteur) | round }} K€
-                        </li>
-                    </ul>
-                </div>
                 <svg id="grandEst" width="75%" height="90%" viewBox="305 50 210 165">
                     /<!--LES REGIONS-->
                     <path id="hauteMarne" class="region"
@@ -76,8 +77,6 @@
                           inkscape:label="#path15258" inkscape:connector-curvature="0"
                           style="fill: {{ couleur.aube }}"/>
                 </svg>
-                <div class="legend"></div>
-                <p style="color:white;">Du moins pire au plus pire !</p>
 
                 <!--NAVBAR-->
                 <nav class="side-navbar side-open position-fixed">
@@ -122,40 +121,37 @@
                             </div>
                         </div>
 
-                        <!--EXPANSION BOUTON-->
-                        <button class="show-modal-exp open-modal">Expansion</button>
-                        <!--EXPANSION MODALE-->
-                        <div class="modal-exp">
-                            <a class="close-modal-exp" href="#">X</a>
-                            <div class="row">
-                                <div class="col-5"><h1>Mes Usines</h1>
-                                    {% for departement in departements %}
-                                        {% if departement.usine == 1 %}
-                                            <ul style="list-style-type: none">
-                                                <li id="dptNom">{{ departement.nom }}</li>
-                                            </ul>
-                                        {% endif %}
-                                    {% endfor %}
-                                </div>
-                                <div class="col-1">
-                                    <a href="{{ path('expansion') }}">
-                                        <button type="button" class="btn exp">Expansion</button>
-                                    </a>
-                                    <p><img class="mini_icon"
-                                            src="{{ asset('build/images/piggy_bank.a0482efe.png') }}">
-                                        <strong id="prix">{{ (500 * facteurInflation.facteur |round)|number_format(0, ' ', ',') }}
-                                            K€</strong></p>
-                                </div>
-                                <div class="col-5"><h1>Départements diponibles</h1>
+                    <!--EXPANSION BOUTON-->
+                    <button class="show-modal-exp open-modal">Expansion</button>
+                    <!--EXPANSION MODALE-->
+                    <div class="modal-exp">
+                        <a class="close-modal-exp" href="#">X</a>
+                        <div class="row">
+                            <div class="col-5" ><h1>Mes Usines</h1>
+                                {% for departement in departements %}
+                                    {% if departement.usine == 1 %}
+                                            <p id="dptNom">{{ departement.nom }}</p>
+                                    {% endif %}
+                                {% endfor %}
+                            </div>
+                            <div class="col-2">
+                                <a href="{{ path('expansion') }}">
+                                    <button type="button" class="btn exp">Expansion</button>
+                                </a>
+                                <br><br>
+                                <p><img class="mini_icon"
+                                        src="{{ asset('build/images/piggy_bank.a0482efe.png') }}">
+                                    <strong id="prix">{{ 500 * facteurInflation.facteur |round }}
+                                        K€</strong></p>
+                            </div>
+                            <div class="col-5"><h1>Départements diponibles</h1>
 
-                                    {% for departement in departements %}
-                                        {% if departement.usine == 0 %}
-                                            <ul style="list-style-type: none">
-                                                <li>{{ departement.nom }}</li>
-                                            </ul>
-                                        {% endif %}
-                                    {% endfor %}
-                                </div>
+                                {% for departement in departements %}
+                                    {% if departement.usine == 0 %}
+                                            <p>{{ departement.nom }}</p>
+                                    {% endif %}
+                                {% endfor %}
+                            </div>
 
 
                             </div>

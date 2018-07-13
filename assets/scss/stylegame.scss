@@ -28,6 +28,7 @@ $niv10:maroon;
 
 .gamer {
   background: #120e0e;
+  width: 100%;
 }
 
 .navbar_detail {
@@ -39,14 +40,8 @@ $niv10:maroon;
 }
 
 li {
-  padding: 1vw;
+  padding: 3vw;
 }
-
-.legend {
-  height: 1vw;
-  background: linear-gradient(to right, $niv1, $niv2, $niv3, $niv4, $niv5, $niv6, $niv7, $niv8, $niv9, $niv10);
-}
-
 
 // CARTOUNETTE
 
@@ -749,3 +744,27 @@ nav.side-open.open span, h5, h5 + p {
   text-align: center;
 }
 
+.exp{
+  background-color: #721413;
+  border: none;
+  color: #fff;
+  outline: none;
+  text-align: center;
+}
+
+
+/*Fin de tour*/
+
+
+.finTour {
+  background-color: #721413;
+  border: none;
+  color: #fff;
+  outline: none;
+  padding: 14px 20px;
+  width: 24vw;
+}
+
+.finTour:hover {
+  background-color: #8f1918;
+}
