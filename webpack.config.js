@@ -10,6 +10,7 @@ Encore
 
     .addEntry('css/stylegame', './assets/scss/stylegame.scss')
     .addEntry('js/stylegame', './assets/js/stylegame.js')
+    .addEntry('css/gameover', './assets/scss/gameover.scss')
 
     // Transfert des images dans build/images.
     .addEntry('images/ampoule_ga', './assets/images/ampoule_ga.png')
@@ -30,6 +31,14 @@ Encore
     .cleanupOutputBeforeBuild()
     .enableBuildNotifications()
     .enableSassLoader()
+
+    .configureBabel(function(babelConfig) {
+        // add additional presets
+        babelConfig.presets.push('es2017');
+
+        // no plugins are added by default, but you can add some
+        // babelConfig.plugins.push('styled-jsx/babel');
+    })
 
 // allows legacy applications to use $/jQuery as a global variable
     .autoProvidejQuery()

@@ -1,0 +1,503 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    {% block stylesheet %}
+        <link rel="stylesheet" href="{{ asset('build/css/gameover.css') }}">
+    {% endblock %}
+
+
+    {% block javascripts %}
+        <script src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/329180/MyMath.js"></script>
+        <script src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/329180/Stage%400.2.0.js"></script>
+        <script>
+            'use strict';
+
+            var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
+            console.clear();
+
+            // simulation namespace
+            var simulation = {
+                stage: null,
+                direction: 0, // degrees
+                directionSpread: 360, // degrees
+                velocity: 5, // pixels per frame @ 60fps
+                velocitySpread: 0.65, // percentage
+                gasRadius: 42, // pixels
+                density: 6, // relative # of particles
+                spawnRest: { x: 0.5, y: 0.75 }, // resting spawn point, values are percentages
+                spawnPoint: { x: 0, y: 0 }, // actual spawn point
+                spawnTarget: { x: 0, y: 0 }, // the target spawn point
+                spawnDelay: 30, // milliseconds between spawns of gas particles
+                _spawn: 0, // internal counter
+                gas: [], // active gas particles
+                gasPool: [], // inactive gas particles
+                flameGradientSprites: [] // store prerendered gradients
+            };
+
+            // initialization
+            simulation.init = function init() {
+                var _window = window,
+                    simulation = _window.simulation;
+
+                // create stage instance and register for events
+
+                var stage = new Stage({
+                    container: document.body,
+                    // All we're drawing is blurry gradients, so no need for high DPI rendering.
+                    highDPI: false
+                });
+
+                simulation.stage = stage;
+
+                stage.onTick = tick;
+                stage.onDraw = draw;
+
+                stage.canvas.addEventListener('mousemove', simulation.pointermoveHandler);
+                stage.canvas.addEventListener('touchmove', simulation.pointermoveHandler);
+                stage.canvas.addEventListener('mouseleave', function () {
+                    simulation.spawnTarget.x = stage.width * simulation.spawnRest.x;
+                    simulation.spawnTarget.y = stage.height * simulation.spawnRest.y;
+                });
+
+                // set initial spawn point
+                simulation.spawnPoint.x = simulation.spawnTarget.x = simulation.stage.width * simulation.spawnRest.x;
+                simulation.spawnPoint.y = simulation.spawnTarget.y = simulation.stage.height * simulation.spawnRest.y;
+
+                // prerender gradients
+                simulation.generateFlameGradients();
+
+                // create GUI controls
+                var gui = new dat.GUI();
+                gui.close();
+
+                gui.add(simulation.spawnRest, 'x', 0, 1);
+                gui.add(simulation.spawnRest, 'y', 0, 1);
+                gui.add(simulation, 'direction', 0, 360);
+                gui.add(simulation, 'directionSpread', 0, 360);
+                gui.add(simulation, 'velocity', 2, 50);
+                gui.add(simulation, 'velocitySpread', 0, 1);
+                gui.add(simulation, 'density', 1, 12).step(1);
+                gui.add(simulation, 'gasRadius', 32, 100).onChange(simulation.handleGasRadiusChange);
+                gui.add(simulation.stage, 'speed', 0.2, 2);
+            };
+
+            simulation.pointermoveHandler = function pointermoveHandler(evt) {
+                var _window2 = window,
+                    simulation = _window2.simulation;
+                var stage = simulation.stage,
+                    spawnTarget = simulation.spawnTarget;
+                var width = stage.width,
+                    height = stage.height;
+
+
+                var pointerSrc = evt.touches ? evt.touches[0] : evt;
+                var x = pointerSrc.clientX;
+                var y = pointerSrc.clientY;
+                spawnTarget.x = x;
+                spawnTarget.y = y;
+            };
+
+            // Simple throttle. Redrawing all sprites can be expensive.
+            function throttle(delay, fn) {
+                var lastCallTime = 0;
+                return function throttleWrapper() {
+                    if (Date.now() - lastCallTime >= delay) {
+                        lastCallTime = Date.now();
+                        fn.apply(undefined, arguments);
+                    }
+                };
+            }
+
+            simulation.handleGasRadiusChange = throttle(250, function handleGasRadiusChange(gasRadius) {
+                simulation.gas.forEach(function (g) {
+                    return g.size = gasRadius;
+                });
+                simulation.flameGradientSprites.forEach(function (s) {
+                    s.resize(gasRadius * 2, gasRadius * 2);
+                    s.redraw();
+                });
+            });
+
+            // prerender gradient frames (avoids calling gradient constructor 100s of times per frame)
+            simulation.generateFlameGradients = function generateFlameGradients() {
+                var _window3 = window,
+                    simulation = _window3.simulation;
+                var stage = simulation.stage,
+                    gasRadius = simulation.gasRadius,
+                    flameGradientSprites = simulation.flameGradientSprites;
+
+                // total number of gradient frames/sprites to prerender
+
+                var framesToGenerate = 120;
+
+                // we'll store incremental keyframes containing easy to edit data (representing gradients), which will be translated into a full set of rendered gradient "frames"
+                // the first keyframe below is documented
+                var keyframes = [];
+
+                // near-white flame
+                keyframes.push({
+                    // the position within the overall animation (0...1)
+                    position: 0,
+                    // define inner gradient circle
+                    start: {
+                        // radius of circle as ratio (0...1)
+                        radius: 0.2,
+                        // normalized rgba values for color stop (0...1 for rgb is translated to 0...255)
+                        r: 1,
+                        g: 1,
+                        b: 0.75,
+                        a: 0.5
+                    },
+
+                    // middle gradient circle, optional if same as `start`
+                    // NOTE: if middle is omitted, it will still be generated (clone of `start`) and the radius of `start` will be set to 0
+                    // middle: {...},
+
+                    // define outer gradient circle
+                    // color data is omitable if the same as `middle/start`
+                    end: {
+                        radius: 0.5,
+                        a: 0
+                    }
+                });
+
+                // bright yellow flame
+                keyframes.push({
+                    position: 0.08,
+                    start: {
+                        radius: 0.4,
+                        r: 1,
+                        g: 1,
+                        b: 0,
+                        a: 0.4
+                    },
+                    end: {
+                        radius: 1,
+                        a: 0
+                    }
+                });
+
+                // orange flame, near yellow on inside
+                keyframes.push({
+                    position: 0.25,
+                    start: {
+                        radius: 0.2,
+                        r: 1,
+                        g: 0.8,
+                        b: 0,
+                        a: 0.4
+                    },
+                    middle: {
+                        radius: 0.6,
+                        r: 1,
+                        g: 0.4,
+                        b: 0,
+                        a: 0.4
+                    },
+                    end: {
+                        radius: 1,
+                        a: 0
+                    }
+                });
+
+                // red-orange flame
+                keyframes.push({
+                    position: 0.4,
+                    start: {
+                        radius: 0.6,
+                        r: 1,
+                        g: 0.2,
+                        b: 0,
+                        a: 0.5
+                    },
+                    end: {
+                        radius: 1,
+                        a: 0
+                    }
+                });
+
+                // flame starts to get smokey in center, with red-orange on the edges
+                keyframes.push({
+                    position: 0.5,
+                    start: {
+                        radius: 0,
+                        r: 0.15,
+                        g: 0.15,
+                        b: 0.15,
+                        a: 0.5
+                    },
+                    middle: {
+                        radius: 0.8,
+                        r: 0.75,
+                        g: 0.12,
+                        b: 0,
+                        a: 0.5
+                    },
+                    end: {
+                        radius: 1,
+                        a: 0
+                    }
+                });
+
+                // smoke
+                keyframes.push({
+                    position: 0.7,
+                    start: {
+                        radius: 0.4,
+                        r: 0.15,
+                        g: 0.15,
+                        b: 0.15,
+                        a: 0.5
+                    },
+                    end: {
+                        radius: 1,
+                        a: 0
+                    }
+                });
+
+                // faded smoke
+                keyframes.push({
+                    position: 1,
+                    start: {
+                        radius: 0.4,
+                        r: 0.15,
+                        g: 0.15,
+                        b: 0.15,
+                        a: 0.2
+                    },
+                    end: {
+                        radius: 1,
+                        a: 0
+                    }
+                });
+
+                // utility method to generate an rgba() string from normalized color component values
+                var computeRGBA = function computeRGBA(c) {
+                    return 'rgba(' + (c.r * 255 | 0) + ',' + (c.g * 255 | 0) + ',' + (c.b * 255 | 0) + ',' + c.a + ')';
+                };
+                // utility method to linearly interpolate values
+                var interpolate = function interpolate(start, end, pos) {
+                    return (end - start) * pos + start;
+                };
+
+                // expand shorthand keyframe states
+                keyframes.forEach(function (k) {
+                    if (!k.middle) {
+                        k.middle = _extends({}, k.start);
+                        k.start.radius = 0;
+                    }
+
+                    k.middle.r = typeof k.middle.r === 'undefined' ? k.start.r : k.middle.r;
+                    k.middle.g = typeof k.middle.g === 'undefined' ? k.start.g : k.middle.g;
+                    k.middle.b = typeof k.middle.b === 'undefined' ? k.start.b : k.middle.b;
+                    k.middle.a = typeof k.middle.a === 'undefined' ? k.start.a : k.middle.a;
+
+                    k.end.r = typeof k.end.r === 'undefined' ? k.middle.r : k.end.r;
+                    k.end.g = typeof k.end.g === 'undefined' ? k.middle.g : k.end.g;
+                    k.end.b = typeof k.end.b === 'undefined' ? k.middle.b : k.end.b;
+                    k.end.a = typeof k.end.a === 'undefined' ? k.middle.a : k.end.a;
+                });
+
+                // generate frames
+                for (var i = 1, len = keyframes.length; i < len; i++) {
+                    var lastFrame = keyframes[i - 1];
+                    var thisFrame = keyframes[i];
+                    var frameBatchSize = Math.floor((thisFrame.position - lastFrame.position) * framesToGenerate);
+
+                    var _loop = function _loop(j) {
+                        var multiplier = j / frameBatchSize;
+
+                        var frame = {
+                            start: {
+                                radius: interpolate(lastFrame.start.radius, thisFrame.start.radius, multiplier),
+                                r: interpolate(lastFrame.start.r, thisFrame.start.r, multiplier),
+                                g: interpolate(lastFrame.start.g, thisFrame.start.g, multiplier),
+                                b: interpolate(lastFrame.start.b, thisFrame.start.b, multiplier),
+                                a: interpolate(lastFrame.start.a, thisFrame.start.a, multiplier)
+                            },
+                            middle: {
+                                radius: interpolate(lastFrame.middle.radius, thisFrame.middle.radius, multiplier),
+                                r: interpolate(lastFrame.middle.r, thisFrame.middle.r, multiplier),
+                                g: interpolate(lastFrame.middle.g, thisFrame.middle.g, multiplier),
+                                b: interpolate(lastFrame.middle.b, thisFrame.middle.b, multiplier),
+                                a: interpolate(lastFrame.middle.a, thisFrame.middle.a, multiplier)
+                            },
+                            end: {
+                                radius: interpolate(lastFrame.end.radius, thisFrame.end.radius, multiplier),
+                                r: interpolate(lastFrame.end.r, thisFrame.end.r, multiplier),
+                                g: interpolate(lastFrame.end.g, thisFrame.end.g, multiplier),
+                                b: interpolate(lastFrame.end.b, thisFrame.end.b, multiplier),
+                                a: interpolate(lastFrame.end.a, thisFrame.end.a, multiplier)
+                            }
+                        };
+
+                        // Generate and store sprite
+                        var sprite = stage.createCachedSprite({
+                            width: gasRadius * 2,
+                            height: gasRadius * 2,
+                            draw: function draw(ctx, _ref) {
+                                var width = _ref.width,
+                                    height = _ref.height;
+
+                                var center = width / 2;
+                                // construct gradient instance with center positioned slightly towards bottom
+                                var gradient = ctx.createRadialGradient(center, height * 0.7, 0, center, center, center);
+                                // add color stops as defined by frames
+                                gradient.addColorStop(frame.start.radius, computeRGBA(frame.start));
+                                gradient.addColorStop(frame.middle.radius, computeRGBA(frame.middle));
+                                gradient.addColorStop(frame.end.radius, computeRGBA(frame.end));
+
+                                ctx.fillStyle = gradient;
+                                ctx.fillRect(0, 0, width, height);
+                            }
+                        });
+
+                        flameGradientSprites.push(sprite);
+                    };
+
+                    for (var j = 1; j <= frameBatchSize; j++) {
+                        _loop(j);
+                    }
+                }
+            };
+
+            // frame step
+            function tick(_ref2) {
+                var simTime = _ref2.simTime,
+                    simSpeed = _ref2.simSpeed,
+                    width = _ref2.width,
+                    height = _ref2.height;
+                var _window4 = window,
+                    simulation = _window4.simulation;
+                var stage = simulation.stage,
+                    gas = simulation.gas,
+                    gasPool = simulation.gasPool,
+                    spawnPoint = simulation.spawnPoint,
+                    spawnTarget = simulation.spawnTarget;
+
+                var twoPI = Math.PI * 2;
+
+                // move spawn point to spawn target
+                var spawnPointSpeed = Math.min(10, MyMath.pointDist(spawnPoint.x, spawnPoint.y, spawnTarget.x, spawnTarget.y) / 20) * simSpeed;
+                var spawnPointVelocity = MyMath.splitVector(spawnPointSpeed, MyMath.pointAngle(spawnPoint.x, spawnPoint.y, spawnTarget.x, spawnTarget.y));
+                spawnPoint.x += spawnPointVelocity.x;
+                spawnPoint.y += spawnPointVelocity.y;
+
+                // spawn gas
+                simulation._spawn += simTime;
+                while (simulation._spawn >= simulation.spawnDelay) {
+                    simulation._spawn -= simulation.spawnDelay;
+
+                    var angle = (simulation.direction - simulation.directionSpread / 2) * MyMath.toRad;
+                    var speed = simulation.velocity;
+                    var gasCount = simulation.density;
+                    var rotateIncrement = simulation.directionSpread * MyMath.toRad / gasCount;
+
+                    for (var i = 0; i < gasCount; i++) {
+                        var subAngle = angle + rotateIncrement * i + Math.random() * rotateIncrement;
+                        var rand = Math.random();
+                        var subSpeed = speed * (1 - (1 - rand * rand) * simulation.velocitySpread);
+
+                        simulation.Gas.new({
+                            x: spawnPoint.x,
+                            y: spawnPoint.y,
+                            speedX: Math.sin(subAngle) * subSpeed,
+                            speedY: -Math.cos(subAngle) * subSpeed
+                        });
+                    }
+                }
+
+                var damp = 1 - 0.04 * simSpeed;
+                var gravity = 0.2;
+
+                for (var _i = gas.length - 1; _i >= 0; _i--) {
+                    var g = gas[_i];
+                    g.age += simTime;
+                    g.x += g.speedX * simSpeed;
+                    g.y += g.speedY * simSpeed;
+                    g.speedX *= damp;
+                    g.speedY = g.speedY * damp - gravity * simSpeed;
+
+                    // remove if offscreen
+                    if (g.y < -g.size || g.x < -g.size || g.x > width + g.size) {
+                        g.remove = true;
+                    }
+
+                    if (g.remove) {
+                        gas.splice(_i, 1);
+                        g.recycle();
+                    }
+                }
+            };
+
+            // rendering
+            function draw(_ref3) {
+                var ctx = _ref3.ctx,
+                    width = _ref3.width,
+                    height = _ref3.height;
+                var _window$simulation = window.simulation,
+                    gas = _window$simulation.gas,
+                    flameGradientSprites = _window$simulation.flameGradientSprites;
+
+                var twoPI = Math.PI * 2;
+
+                ctx.clearRect(0, 0, width, height);
+
+                for (var i = gas.length - 1; i >= 0; i--) {
+                    var g = gas[i];
+                    var life = Math.min(1, g.age / g.lifespan);
+                    var spriteIndex = Math.floor(life * (flameGradientSprites.length - 1));
+                    var sprite = flameGradientSprites[spriteIndex];
+
+                    sprite.x = g.x - g.size;
+                    sprite.y = g.y - g.size;
+                    sprite.drawOnContext(ctx);
+                }
+            };
+
+            // Block definition
+            simulation.Gas = function Gas() {
+                // whether block should be removed
+                this.remove = false;
+                // position / size
+                this.x = 0;
+                this.y = 0;
+                this.size = 0;
+                this.speedX = 0;
+                this.speedY = 0;
+
+                // lifetime in milliseconds
+                this.lifespan = 0;
+                this.age = 0;
+            };
+
+            // create a new gas particle
+            simulation.Gas.new = function (initData) {
+                var g = simulation.gasPool.pop() || new simulation.Gas();
+
+                // initialize
+                g.age = 0;
+                g.lifespan = Math.floor(Math.random() * 800 + 1700);
+                g.size = simulation.gasRadius;
+                g.x = initData.x;
+                g.y = initData.y;
+                g.speedX = initData.speedX;
+                g.speedY = initData.speedY;
+
+                // add gas to list and return reference
+                simulation.gas.push(g);
+                return g;
+            };
+
+            // recycle block and return to pool
+            simulation.Gas.prototype.recycle = function recycle() {
+                this.remove = false;
+                simulation.gasPool.push(this);
+            };
+
+            // kick off simulation
+            simulation.init();
+        </script>
+        {% endblock %}
+{% endblock %}
