@@ -150,6 +150,16 @@ body.loaded {
   font-weight: lighter;
 }
 
+.bouton-basique a{
+  color: #721212;
+  text-decoration: none;
+}
+
+.bouton-hover a{
+  color: white;
+  text-decoration: none;
+}
+
 @keyframes scrollWheel {
   from {
     top: 0px;
