@@ -7,21 +7,17 @@
     {% endblock %}
     <div class="gameover">GAME OVER</div>
     <div class="centrage_bouton">
-        <div class="container"></div>
-        <div class="cube">
-            <a href="{{ path('initial', {id:1}) }}" class="bouton-basique">
+        <a href="{{ path('initial',{'id':2}) }}" style="text-decoration:none">
+            <div class="container"></div>
+            <div class="cube">
                 <div class="default-state">
-                    <a href="{{ path('initial', {id:1}) }}" class="bouton-basique">
-                        <span>pourquoi ?</span>
-                    </a>
+                    <span>pourquoi j'ai perdu</span>
                 </div>
-            </a>
-            <div class="active-state">
-                <a href="{{ path('initial', {id:1}) }}" class="bouton-hover">
+                <div class="active-state">
                     <span>Quizz</span>
-                </a>
+                </div>
             </div>
-        </div>
+        </a>
     </div>
 
     {% block javascripts %}
